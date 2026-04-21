@@ -9,6 +9,17 @@
 <meta name="keywords" content="business name,company,information technology,communication,best ICT company, Company in morogoro" />
 <meta http-equiv="" content="">
 <meta name="author" content="skylink solutions">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="skylink solutions, best ict company in morogoro,tanzania,make your life smooth with Discover the best ict solutions">
+<meta name="keywords" content="business name,company,information technology,communication,best ICT company, Company in morogoro" />
+<meta http-equiv="" content="">
+<meta name="author" content="skylink solutions">
 <script type="application/x-javascript"> addEventListener("load", function() {
  setTimeout(hideURLbar, 0);
   }, false);
@@ -16,8 +27,8 @@
         window.scrollTo(0,1);
          }
           {
-      "@context": "https://skylinksolutions.co.tz/", 
-      "@type": "Service provider, IT services ",
+      "@@context": "https://skylinksolutions.co.tz/", 
+      "@@type": "Service provider, IT services ",
       "headline": "innovations,- subscriptions",
       "description": "skylink solutions, best ICT company in morogoro, utomation systems control and monitor processes, Project management software.",
       "image": "https://skylinksolutions.co.tz/images/assets/logo/logo-01.png",
@@ -27,7 +38,7 @@
       "dateModified": "2025-12-25",
       "publisher": "skylinksolutions.co.tz",
       "author": {
-        "@type": "skylinksolutions",
+        "@@type": "skylinksolutions",
         "name": "skylinksolutions"
       }
     }
@@ -360,3 +371,5 @@
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
     <script src="{{ asset('js/map-script.js') }}"></script>
+</body>
+</html>

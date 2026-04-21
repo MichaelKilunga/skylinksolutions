@@ -3,7 +3,7 @@
 @section('content')
 
     <section id="slider-part" class="slider-active">
-        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/assets/hygiene/h3.PNG" data-overlay="4">
+        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/assets/hygiene/h3.PNG') }})" data-overlay="4">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-lg-9">
@@ -19,7 +19,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- single slider -->
-        <div class="single-slider bg_cover pt-10" style="background-image: url(images/slider/new/about.jpg') }})" data-overlay="4">
+        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/slider/new/about.jpg') }})" data-overlay="4">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-lg-9">
@@ -32,7 +32,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- single slider -->
-        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/assets/pro2.jpg" data-overlay="4">
+        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/assets/pro2.jpg') }})" data-overlay="4">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-lg-9">
@@ -50,7 +50,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- single slider -->
-        <div class="single-slider bg_cover pt-10" style="background-image: url(images/slider/team1.jpg') }})" data-overlay="4">
+        <div class="single-slider bg_cover pt-10" style="background-image: url({{ asset('images/slider/team1.jpg') }})" data-overlay="4">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-lg-9">
