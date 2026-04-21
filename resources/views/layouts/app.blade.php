@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>@yield('title', config('app.name', 'SkyLink Solutions'))</title>
+        <meta name="description" content="@yield('meta_description', 'SkyLink Solutions - Digital Technology Company in Morogoro, Tanzania. Software Development, ICT Infrastructure, Security & Surveillance.')">
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -30,12 +31,15 @@
     </head>
     <body>
 
-        {{-- Livewire navigation (Jetstream) --}}
-        @livewire('navigation-menu')
+        {{-- ===== Site Header ===== --}}
+        @include('layouts.partials.header')
 
-        <!-- ===== Page Content ===== -->
+        {{-- ===== Page Content ===== --}}
         {{ $slot ?? '' }}
         @yield('content')
+
+        {{-- ===== Site Footer ===== --}}
+        @include('layouts.partials.footer')
 
         @stack('modals')
 
