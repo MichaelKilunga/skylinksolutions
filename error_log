@@ -1,0 +1,11 @@
+[17-Apr-2025 08:44:14 Africa/Nairobi] PHP Warning:  Undefined variable $conn in /home/irfdjjne/public_html/contact.php on line 73
+[17-Apr-2025 08:44:14 Africa/Nairobi] PHP Fatal error:  Uncaught TypeError: mysqli_real_escape_string(): Argument #1 ($mysql) must be of type mysqli, null given in /home/irfdjjne/public_html/contact.php:73
+Stack trace:
+#0 /home/irfdjjne/public_html/contact.php(73): mysqli_real_escape_string(NULL, 'casino slots')
+#1 {main}
+  thrown in /home/irfdjjne/public_html/contact.php on line 73
+[27-Jun-2025 05:42:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/irfdjjne/public_html/connection.php:2
+Stack trace:
+#0 /home/irfdjjne/public_html/connection.php(2): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue))
+#1 {main}
+  thrown in /home/irfdjjne/public_html/connection.php on line 2
