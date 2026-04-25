@@ -31,6 +31,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'position',
+        'bio',
+        'is_visible',
+        'can_login',
+        'deletion_requested_at',
+        'sort_order',
     ];
 
     /**
@@ -64,6 +70,16 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_visible' => 'boolean',
+            'can_login' => 'boolean',
+            'deletion_requested_at' => 'datetime',
         ];
+    }
+    /**
+     * Scope a query to only include visible team members.
+     */
+    public function scopeVisibleTeam($query)
+    {
+        return $query->where('is_visible', true)->orderBy('sort_order', 'asc');
     }
 }

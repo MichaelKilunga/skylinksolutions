@@ -81,6 +81,20 @@
                 @endif
             @endif
         </div>
+
+        <!-- Position -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="position" value="{{ __('Job Position') }}" />
+            <x-input id="position" type="text" class="mt-1 block w-full" wire:model="state.position" autocomplete="position" />
+            <x-input-error for="position" class="mt-2" />
+        </div>
+
+        <!-- Bio -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="bio" value="{{ __('Bio / Description') }}" />
+            <textarea id="bio" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" wire:model="state.bio" rows="3"></textarea>
+            <x-input-error for="bio" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">

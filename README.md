@@ -2,7 +2,7 @@
 
 Welcome to the **SkyLink Solutions** web platform codebase. This project has been modernized from a static raw PHP application into a scalable, enterprise-grade **Laravel** application. 
 
-SkyLink Solutions is a digital technology company specializing in software development, ICT infrastructure (Networking), security, and surveillance. This web platform serves as the primary digital footprint, showcasing services, capturing client inquiries, and serving as a launchpad for products like PillPointOne, AfyaDigito, and SkyPush.
+SkyLink Solutions is a digital technology company specializing in software development, ICT infrastructure (Networking), security, and surveillance. This web platform serves as the primary digital footprint, showcasing services, capturing client inquiries, and serving as a launchpad for products like PillPointOne and AfyaDigito.
 
 ## Tech Stack
 

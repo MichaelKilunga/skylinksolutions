@@ -138,35 +138,91 @@ p {
 
 .main-btn {
 	display: inline-block;
-	font-weight: 500;
+	font-weight: 700;
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
-	border: 1px solid red;
+	border: none;
 	padding: 0 35px;
 	font-size: 16px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
 	line-height: 50px;
-	border-radius: 5px;
-    color: #07294d;
+	border-radius: 50px;
+    color: #fff;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     z-index: 5;
-    -webkit-transition: 0.4s ease-in-out;
-    transition: 0.4s ease-in-out;
-    background-color: red;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(45deg, #ff0000, #cc0000);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
 }
-.main-btn:hover{
-    color: red;
-    border-color: #07294d;
-    background-color: #07294d;
+
+.main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    color: #fff;
 }
+
+.main-btn:active {
+    transform: translateY(-1px) scale(0.95);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+}
+
+.main-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.main-btn:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+/* Premium Link Animation */
+.premium-link {
+    font-weight: 700;
+    color: #07294d;
+    text-transform: uppercase;
+    font-size: 14px;
+    position: relative;
+    padding-right: 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.premium-link i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.premium-link:hover {
+    color: #ff0000;
+    padding-right: 30px;
+}
+
+.premium-link:hover i {
+    right: -5px;
+    color: #ff0000;
+}
+
+.premium-link:active {
+    transform: scale(0.95);
+}
+
 
 
 
@@ -413,16 +469,20 @@ p {
 .header-contact ul li img{}
 .header-contact ul li span {
 	color: #dee2e6;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: 400;
 	margin-left: 10px;
+    letter-spacing: 0.8px;
+    word-spacing: 1px;
 }
 
 .header-opening-time{}
 .header-opening-time p {
 	color: #dee2e6;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: 400;
+    letter-spacing: 0.8px;
+    word-spacing: 1px;
 }
 
 /*===== Header Logo support =====*/
@@ -573,6 +633,104 @@ p {
 
 .navigation .navbar .navbar-nav li .sub-menu li:last-child a{
     border-bottom: 0;
+}
+
+/* Premium Dropdown Enhancements */
+@media (min-width: 992px) {
+    /* Show on Hover */
+    .navigation .navbar .navbar-nav li.nav-item.dropdown:hover > .premium-dropdown {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Base Styling for Premium Dropdown */
+    .premium-dropdown {
+        display: block; /* Override Bootstrap's display: none */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        padding: 15px 0;
+        min-width: 240px;
+        background: #ffffff;
+        margin-top: 0;
+    }
+
+    /* Premium Link Effects */
+    .premium-dropdown .dropdown-item {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #07294d;
+        padding: 12px 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        border-bottom: 1px solid #f8f9fa;
+    }
+
+    .premium-dropdown .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Shaking and Attraction Effect */
+    @keyframes linkShake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(3px); }
+        50% { transform: translateX(-3px); }
+        75% { transform: translateX(3px); }
+        100% { transform: translateX(0); }
+    }
+
+    .premium-dropdown .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #ff0000;
+        padding-left: 30px;
+        animation: linkShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    /* Small indicator dot on hover */
+    .premium-dropdown .dropdown-item::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        width: 6px;
+        height: 6px;
+        background-color: #ff0000;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .premium-dropdown .dropdown-item:hover::before {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Mobile Dropdown Styling */
+@media (max-width: 991.98px) {
+    .premium-dropdown {
+        border: none;
+        box-shadow: none;
+        padding-left: 20px;
+        background: transparent;
+    }
+    
+    .premium-dropdown .dropdown-item {
+        padding: 10px 0;
+        font-weight: 500;
+        color: #07294d;
+    }
+    
+    .premium-dropdown .dropdown-item:hover {
+        color: #ff0000;
+        background: transparent;
+    }
 }
 
 .navbar .navbar-toggler {
@@ -773,7 +931,7 @@ p {
 ======================================================*/
 
 .single-slider{
-    padding-bottom: 300px;
+    padding-bottom: 180px;
 }
 
 .slider-cont{
@@ -3775,6 +3933,35 @@ p.form-message.error {
 	padding-bottom: 15px;
 }
 
+/* Custom Dropdown Fixes to Match Theme */
+.navigation .navbar .navbar-nav li .dropdown-menu {
+    background-color: #07294d;
+    border: none;
+    border-radius: 0;
+    margin-top: 0;
+    padding: 0;
+}
+.navigation .navbar .navbar-nav li .dropdown-menu .dropdown-item {
+    padding: 10px 15px;
+    display: block;
+    border-bottom: 1px solid rgba(255, 198, 0, 0.5);
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+.navigation .navbar .navbar-nav li .dropdown-menu .dropdown-item:last-child {
+    border-bottom: 0;
+}
+.navigation .navbar .navbar-nav li .dropdown-menu .dropdown-item:hover,
+.navigation .navbar .navbar-nav li .dropdown-menu .dropdown-item.active {
+    background-color: transparent;
+    padding-left: 20px;
+    color: red;
+}
 
 
 

@@ -1,311 +1,311 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="page-banner" class="pt-20 pb-20 bg_cover" data-overlay="8" style="background-image: url({{ asset('images/assets/offics.jpg') }})">
+    <section id="page-banner" class="bg_cover" data-overlay="9"
+        style="background-image: url({{ asset('images/bannerbg/banner-bg.png') }}); height: auto; padding: 20px 0;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-banner-cont">
-                        <h3 style="color: white;">ICT Cleaning & Hygiene</h3>
-                    </div> <!-- page banner cont -->
+                <div class="col-12">
+                    <div class="page-banner-cont" style="position: relative; z-index: 5;">
+                        <h3 class="text-white font-weight-bold mb-1" style="text-shadow: 2px 2px 6px rgba(0,0,0,0.8); font-size: 24px;">
+                            ICT Cleaning & Hygiene</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-transparent p-0 mb-0" style="font-size: 14px;">
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Home</a></li>
+                                <li class="breadcrumb-item active text-white-50" aria-current="page" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">ICT Cleaning</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
+            </div>
+        </div>
     </section>
-    <section id="event-singel" class="pt-20 pb-20 gray-bg">
+
+    <section id="ict-cleaning-details" class="pt-80 pb-80 bg-light">
         <div class="container">
-            <div class="events-area">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="events-left">
-                            <h3>ICT Cleaning & Hygiene Picture and Service Description</h3>
-                            <img src="{{ asset('images/assets/hygiene/clean.jpg') }}" alt="Event">
-                            <p style="text-align: justify;">We show the Performance Behind your ICT computing devices, we bring ict knowledge close to your staffs through the use of ICT cleaning and hygiene programme. ICT cleaning provides you a great opportunity to assure and secure your device from unnecessary damage by assuring health of your device, give good appearance and alignment of computing materials to server room, data rooms as well as office.<br>We are specialist in cleaning all types of ICT equipment’s, server rooms, data rooms. Rooms for small, medium and large organizations in term of ICT computing devices. We clean all computer equipment including laptops, photocopiers, scanners, fax machines, desktop computers, printers, retail equipment and data racks. By cleaning the ventilation, electrical contacts and moving parts of your equipment's.
-							</p><br>
-                            <p style="text-align: justify;"><h5>Our services</h5>Our services are comprehensive in helping our valued clients to enhance connectivity, access to trade and public services through automation that drives digital transformation.Ict cleaning and hygiene provides excellence in the field of determine fault of computing device, mounting of data Rack(cabinet), alignment and arrangement of cable, Computer Optimization and Notify performance alert of computing devices to drive the modern-day customer towards your working experience
-                            </p>
-                            <p style="text-align: justify;">
-                             <h5> Issues</h5>
-                            Bacteria, allergens, germs, and other microbes are 
-                            the common inhabitants of a regular office 
-                            environment. Employees, customers, and visitors 
-                            can easily spread diseases by simply touching the 
-                            surface of the germs infected computer equipment, 
-                            keyboard, or telephone set
-                            </p>
-                            <p style="text-align: justify;">
-                                <h5>Challenges</h5>
-                                The traditional office cleaning companies are 
-                                either unaware or untrained & unequipped to 
-                                clean the office computers with modern-day 
-                                hygiene compliance standards
-                            </p>
-                            <p style="text-align: justify;">
-                                <h5>Solutions</h5>
-                                At Computing devices Cleaning, we understand the office's 
-                                modern-day hygiene requirements. We adhere to 
-                                computer manufacturers standard and guidelines 
-                                for cleaning procedures. We use the industry 
-                                approved cleaning products and apply green 
-                                cleaning solutions where possible. We have state of-the-art cleaning equipment and suitable 
-                                products. Our cleaners are insured, well trained, 
-                                and background security checked
-                            </p>
-                            <p style="text-align: justify;">
-                                <h5>What to do now?</h5>
-                                If you’re interested in our service, please contact us today or call <span class="" style="color: red;"> +255 (0) 679 925 725</span> We would certainly love to hear from you. Contact us with any queries and questions about our ICT cleaning and hygiene services in Morogoro or elsewhere in the Tanzania. We will respond without delay. We also welcome you if you are looking for general information, special advice, or a free quote.<br>
-                                 <span style="color: red;">Flexible Practice</span><br>
-                                 Our operation has no limit. 
-                                 Whether you require an initial cleaning service or a recurring cleaning program, we can determine your requirements and provide you with a competitive quote. Our ICT cleaning services can be undertaken out of hours to suit your individual needs including weekends and throughout the night.
-                            </p>
-                            <br><hr>
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                   <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h12.PNG') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Office Telephone Cleaning</h6>
-                                                    <p style="text-align: justify;">Computer and telephone cleaning    service is the most frequently  requested service that we  
-                                                    receive from our clients on regular basis. Like other computer related cleaning services office telephones are given the same cleaning attention. The telephone hand receiver,   handset, and dialling pads are thoroughly cleaned. Dust and other   oily residue are removed from the 
-                                                    phone display screen. The buttons and keys on the dialling pad of the telephone set are deep cleaned and finally, the surface is  polished    with the antibacterial solution.</p>
-                                                   </div>
-                                               </div> 
-                                            </a>
-                                      
-                                       <br><hr>
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="main-content-card bg-white p-4 p-md-5 rounded shadow-sm border-top border-primary border-3">
+                        <div class="section-title mb-4">
+                            <h5 class="text-primary font-weight-bold">Professional Maintenance</h5>
+                            <h2 class="h1">Protect Your Critical Infrastructure</h2>
+                            <div class="mt-2" style="width: 50px; height: 3px; background-color: #007bff;"></div>
+                        </div>
 
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                   <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h11.PNG') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Monitor Screen Cleaning</h6>
-                                                    <p style="text-align: justify;">Monitor screens are cleaned using high-quality anti-static cleaning solutions and micro-fibre cloth.  Dirt and dust are first wiped from the screen, and then the computer screen cleaning solution is  applied to remove grease and smudges leaving the screen residue free. Fingerprints marks and other oily scratches are removed. The monitor screen  holding frame, stand,  and air vents   at  the back of the monitor equipment   are thoroughly cleaned. We clean all kind of  monitor screens including LCD,LED, VDU,or  flat-panel  display screens</p>
-                                                   </div>
-                                               </div> 
-                                            </a>
-                                     
+                        <div class="img-wrapper mb-4 overflow-hidden rounded shadow-sm">
+                            <img src="{{ asset('images/assets/hygiene/clean.jpg') }}" alt="ICT Cleaning"
+                                class="img-fluid transition-all hover-scale-img">
+                        </div>
 
-                        </div> <!-- events left -->
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="events-right">
-                        <div class="col-lg-12 col-md-6">
-                               <div class="saidbar-post mt-30">
-                                   <h4>Our Specialist Services</h4>
-                                   <br><hr>
-                                   <ul>
-                                       <li>
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                       <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h4.jpg') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                    <h6>Computer Surface Cleaning</h6>
-                                                       <p style="text-align: justify;">Computer surface cleaning refers  to the removal of dirt, dust,   breadcrumbs and other debris from the surface of computer equipment.By surface cleaning, colours become 
-                                                       more vibrant and previously  unseen  aspects ofthe computer equipment become more visible. Anti-static cleaning brushes, microfiber  towels, dust sucking machines, computer    
-                                                       wipes, and compressed  air are used to  accomplish these tasks. In computer    sanitisation, over 99.99%  of  specific    bacteria is killed using antibacterial   solutions</p>                                                   </div>
-                                               </div> <!-- singel post -->
-                                            </a>
-                                       </li>
-                                       <br><hr>
-                                       <li>
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                   <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h8.PNG') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Keyboard Cleaning</h6>
-                                                    <p style="text-align: justify;">Dirt, dust, breadcrumbs and other debris are gently loosened and removed from the keyboard.Special  anti-static cleaning brushes designed for electronic  equipment cleaning are run through between the keys of the keyboard.   Compressed  air can and air dusters are used to remove bits and pieces stuck between the keys. Special     anti-static dust sucking pumps and keyboard vacuum cleaners are used    to  extract dust from the keyboard.   Finally, keyboards are polished    with antibacterial solutions to  protect against bacteria and germs.</p>
-                                                   </div>
-                                               </div> 
-                                            </a>
-                                       </li>
-                                        <br><hr>
-                                        <li>
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                   <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h9.PNG') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Laptop Cleaning</h6>
-                                                    <p style="text-align: justify;">Compress air spray is used to loosen the gunk that is  stuck  between the keys of the laptop. The laptop  vents are also cleaned the similar way to allow fresh cool air to  the circuit board of the laptop  to  avoid overheating.Special anti-static dust sucking pumps are used to  extract dust from the laptop. The laptop  display screen  is  cleaned with the industry recommended screen cleaning wipes and cleaning solutions. Once thoroughly  cleaned,the     antibacterial solution is applied to  provide protection against bacteria and germs.  </p>
-                                                   </div>
-                                               </div> 
-                                            </a>
-                                       </li>
-                                        <br><hr>
-                                                                                <li>
-                                            <a href="#">
-                                                <div class="singel-post">
-                                                   <div class="thum">
-                                                       <img src="{{ asset('images/assets/hygiene/h10.jpg') }}" alt="Blog">
-                                                   </div>
-                                                   <div class="cont">
-                                                       <h6>Deep Cleaning</h6>
-                                                    <p style="text-align: justify;">Computer deep cleaning is an exceptionally intense cleaning process.In this processdirt,dust, breadcrumbs and other debris cleaned from the computer throughout. In  deep cleaning attention to  details is essential because the primary focus   is on the removal of dust and debris stuck  inside the computer vents and other internal parts. This is a more labour intensive   cleaning process and  requires special knowledge and cleaning tools. In the inside out cleaning dust is removed from a computer using a dust extraction  machine. The air extraction pump sucks out the dust build-up inside the    computer. A compressed air can in conjunction with a special vacuum cleaner is used to  give a computer a perfect clean.</p>
-                                                   </div>
-                                               </div> 
-                                            </a>
-                                       </li>
-                              
-                                       
-                                       
-                                   </ul>
-                               </div> <!-- saidbar post -->
-                           </div>
-                           <div class="events-address mt-30">
-                                <ul>
-                                    <li>
-                                        <div class="singel-address">
-                                            <div class="icon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <div class="cont">
-                                                <h6>Operation Days</h6>
-                                                <span>We conduct this service from Monday to Saturday in a week basis</span>
-                                            </div>
-                                        </div> 
-                                    </li>
-                                    <li>
-                                        <div class="singel-address">
-                                            <div class="icon">
-                                                <i class="fa fa-bell-slash"></i>
-                                            </div>
-                                            <div class="cont">
-                                                <h6>Operation Time </h6>
-                                                <span>Al18:00PM Evening -> 00:00AM Night</span>
-                                            </div>
-                                        </div> 
-                                    </li>
-                                </ul>
-                                <div id="contact-map" class="mt-25"></div> <!-- Map -->
-                            </div> <!-- events address --><br>
-                        </div> <!-- events right -->
-                    </div>
-                    <div class="row">
-                        
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- events-area -->
-        </div> <!-- container -->
-    </section>
-    <section>
-        <div class="row">
-                       <div class="col-lg-6">
-                     <div class="contact-from mt-20">
-                        <div class="section-title">
-                            <h5>Area of Operation</h5>
-                            <p>Our Company operates across the country with current focus in central and east of Tanzania.</p>
-                            <!-- <h2>Keep in touch</h2> -->
-                        </div> 
-                        <div class="main-form pt-10">
-                            <div class="">
-                            <img src="{{ asset('images/assets/map/nchi1.png') }}" style="margin-left: 30%;">
-                       </div>
-       </div>
-       </div>
-   </div>
+                        <p class="lead text-muted mb-4">
+                            We specialize in the professional cleaning of ICT equipment, server rooms, and data centers. Our
+                            program is designed to secure your devices from unnecessary damage by ensuring the hygiene and
+                            optimal performance of your infrastructure.
+                        </p>
 
- <?php
-// include 'connection.php';
-date_default_timezone_set('Africa/Nairobi');
-$posted_date = date('Y-m-d').' '.date('H:i:s');
+                        <p class="text-justify mb-5">
+                            Traditional cleaning methods often fail to address the specific needs of sensitive electronic
+                            components. Dust buildup in server rooms can lead to overheating and hardware failure, while
+                            shared office equipment like keyboards and telephones can become breeding grounds for bacteria.
+                            Our specialized approach uses industry-approved products to sanitize and maintain your equipment
+                            without risking damage.
+                        </p>
 
-      if(isset($_POST['submit'])) {
-          // code...
-        $fullname =mysqli_real_escape_string($conn, $_POST['fullname']);
-        $location =mysqli_real_escape_string($conn, $_POST['location']);
-        $device =mysqli_real_escape_string($conn, $_POST['device']);
-        $phone_number =mysqli_real_escape_string($conn, $_POST['phone_number']);
-        $message =mysqli_real_escape_string($conn, $_POST['message']);
-         
-        $reply ="INSERT INTO `request`(`fullname`, `location`, `device`, `phone_number`, `message`,`posted_date`) VALUES ('$fullname','$location','$device','$phone_number','$message','$posted_date')";
-         mysqli_query($conn, $reply);
-     ?>
-     <script type="text/javascript">
-                  Swal.fire({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'Ombi lako limetumwa kikamilifu.',
-                    text: 'Asante!.',
-                    showConfirmButton: false,
-                    timer: 2100
-                        });
-                  window.location='ict-cleaning.php';
-                </script>
-                  <?php 
-                      }
-
-                    ?>
-                    <div class="col-lg-6">
-                                 <div class="contact-from mt-30">
-                        <div class="section-title">
-                            <h5>Request for ICT Cleaning and Hygiene Service?</h5>
-                            <p>Fill the application form below</p>
-                            <!-- <h2>Keep in touch</h2> -->
-                        </div> 
-                        <!-- section title -->
-                        <div class="main-form pt-20">
-                            <form  action="" method="POST" >
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="singel-form form-group">
-                                            <input type="text" name="fullname"  placeholder="Your fullname" data-error="Name is required." required="required">
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- singel form -->
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div
+                                    class="info-box p-4 rounded text-center h-100 border bg-white shadow-hover transition-all">
+                                    <div class="icon-circle mb-3 mx-auto bg-danger-light">
+                                        <i class="fa fa-bug text-danger fs-3"></i>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="singel-form form-group">
-                                            <input type="text" name="location"  placeholder="Location" data-error="Valid location is required." required="required">
-                                            <div class="help-block with-errors"></div>
-                                        </div> <!-- singel form -->
+                                    <h5 class="font-weight-bold">The Issue</h5>
+                                    <p class="small text-muted mb-0">Bacteria and allergens thrive on shared equipment,
+                                        spreading illness among staff.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div
+                                    class="info-box p-4 rounded text-center h-100 border bg-white shadow-hover transition-all">
+                                    <div class="icon-circle mb-3 mx-auto bg-warning-light">
+                                        <i class="fa fa-exclamation-triangle text-warning fs-3"></i>
                                     </div>
+                                    <h5 class="font-weight-bold">The Challenge</h5>
+                                    <p class="small text-muted mb-0">Regular cleaners lack the training to handle sensitive
+                                        ICT hardware safely.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div
+                                    class="info-box p-4 rounded text-center h-100 border bg-white shadow-hover transition-all">
+                                    <div class="icon-circle mb-3 mx-auto bg-success-light">
+                                        <i class="fa fa-check-circle text-success fs-3"></i>
+                                    </div>
+                                    <h5 class="font-weight-bold">The Solution</h5>
+                                    <p class="small text-muted mb-0">Specialized tools and anti-static products to sanitize
+                                        without damage.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                                    <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                    <label></label>
-                                    <select class="form-control select2" name="device" required>
-                                    <option disabled selected value="">Aina ya Kifaa</option >
-                                    <option value="laptops">Laptop Computer</option>
-                                    <option value="desktops">Desktop Computer</option>
-                                    <option value="printers">Printer Machine</option>
-                                    <option value="scanners">Scanner Machine</option>
-                                    <option value="photocopiers">photocopiers Machine</option>
-                                    <option value="scanners">Fax Machine</option>
-                                    <option value="Mengineyo">Others</option>
+                        <h3 class="mt-5 mb-4 font-weight-bold">Why Choose Our Specialist Service?</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6 mb-4">
+                                <div
+                                    class="specialist-item d-flex align-items-center p-3 rounded border bg-light shadow-hover transition-all">
+                                    <div class="img-container mr-3 rounded overflow-hidden shadow-sm"
+                                        style="width: 80px; height: 80px; min-width: 80px;">
+                                        <img src="{{ asset('images/assets/hygiene/h12.PNG') }}"
+                                            class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div>
+                                        <h6 class="font-weight-bold mb-1">Telephone Cleaning</h6>
+                                        <p class="small text-muted mb-0">Deep sanitization of handsets and dialing pads.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div
+                                    class="specialist-item d-flex align-items-center p-3 rounded border bg-light shadow-hover transition-all">
+                                    <div class="img-container mr-3 rounded overflow-hidden shadow-sm"
+                                        style="width: 80px; height: 80px; min-width: 80px;">
+                                        <img src="{{ asset('images/assets/hygiene/h11.PNG') }}"
+                                            class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div>
+                                        <h6 class="font-weight-bold mb-1">Monitor Cleaning</h6>
+                                        <p class="small text-muted mb-0">Anti-static treatment for LCD/LED screens.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div
+                                    class="specialist-item d-flex align-items-center p-3 rounded border bg-light shadow-hover transition-all">
+                                    <div class="img-container mr-3 rounded overflow-hidden shadow-sm"
+                                        style="width: 80px; height: 80px; min-width: 80px;">
+                                        <img src="{{ asset('images/assets/hygiene/h8.PNG') }}"
+                                            class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div>
+                                        <h6 class="font-weight-bold mb-1">Keyboard Deep-Clean</h6>
+                                        <p class="small text-muted mb-0">Extraction of debris and surface polishing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="specialist-item d-flex align-items-center p-3 rounded border bg-light shadow-hover transition-all">
+                                    <div class="img-container mr-3 rounded overflow-hidden shadow-sm"
+                                        style="width: 80px; height: 80px; min-width: 80px;">
+                                        <img src="{{ asset('images/assets/hygiene/h9.PNG') }}"
+                                            class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div>
+                                        <h6 class="font-weight-bold mb-1">Laptop Maintenance</h6>
+                                        <p class="small text-muted mb-0">Vent cleaning and screen sanitization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="sidebar sticky-top" style="top: 100px; z-index: 10;">
+                        <div
+                            class="request-form-card bg-white p-4 rounded shadow-sm border-top border-primary border-3 mb-4">
+                            <h4 class="font-weight-bold mb-2">Get a Free Quote</h4>
+                            <p class="small text-muted mb-4">Request our specialized cleaning service today.</p>
+
+                            @if(session('success'))
+                                <div class="alert alert-success mb-4" role="alert">
+                                    <i class="fa fa-check-circle mr-2"></i> {{ session('success') }}
+                                </div>
+                            @endif
+
+                            <form action="{{ route('quote.request') }}" method="POST">
+                                @csrf
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control form-control-lg rounded bg-light border-0"
+                                        name="fullname" placeholder="Full Name" value="{{ old('fullname') }}" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control form-control-lg rounded bg-light border-0"
+                                        name="location" placeholder="Location" value="{{ old('location') }}" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <select class="form-control form-control-lg rounded bg-light border-0" name="device"
+                                        required>
+                                        <option disabled selected value="">Select Equipment</option>
+                                        <option value="laptops" {{ old('device') == 'laptops' ? 'selected' : '' }}>Laptops</option>
+                                        <option value="desktops" {{ old('device') == 'desktops' ? 'selected' : '' }}>Desktops</option>
+                                        <option value="printers" {{ old('device') == 'printers' ? 'selected' : '' }}>Printers</option>
+                                        <option value="servers" {{ old('device') == 'servers' ? 'selected' : '' }}>Servers & Racks</option>
+                                        <option value="others" {{ old('device') == 'others' ? 'selected' : '' }}>Others</option>
                                     </select>
-                                    </div>
-                                    </div>              
-                                    <div class="col-md-6">
-                                        <div class="singel-form form-group">
-                                            <input type="text" name="phone_number"  placeholder="Phone" data-error="Phone is required." required="required">
-                                            <div class="help-block with-errors"></div>
-                                        </div> 
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="singel-form form-group">
-                                            <textarea type="text" name="message" placeholder="Messege" data-error="Please,leave us a message." required="required"></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div> 
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="singel-form">
-                                            <button type="submit" name="submit" value="submit" class="main-btn">Submit</button>
-                                        </div> <!-- singel form -->
-                                    </div> 
-                                </div> <!-- row -->
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control form-control-lg rounded bg-light border-0"
+                                        name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}" required>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <textarea class="form-control form-control-lg rounded bg-light border-0" name="message" rows="3"
+                                        placeholder="Additional Details">{{ old('message') }}</textarea>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-primary btn-lg w-100 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit
+                                    Request</button>
                             </form>
-                        </div> <!-- main form -->
-                    </div>
-           </div>
-    </section>
-    
+                        </div>
 
+                        <div
+                            class="operation-info-card bg-white p-4 rounded shadow-sm border-left border-primary border-3">
+                            <h5 class="font-weight-bold mb-3">Service Availability</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start mb-3">
+                                    <div class="icon text-primary mt-1 mr-3">
+                                        <i class="fa fa-calendar-check-o"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0 font-weight-bold text-dark">Mon - Sat</p>
+                                        <p class="small text-muted mb-0">Full week coverage</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-start">
+                                    <div class="icon text-primary mt-1 mr-3">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0 font-weight-bold text-dark">Flexible Hours</p>
+                                        <p class="small text-muted mb-0">After-hours service available</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .bg-danger-light {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .bg-warning-light {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        .bg-success-light {
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .shadow-hover:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+            transform: translateY(-5px);
+        }
+
+        .hover-scale-img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-wrapper:hover .hover-scale-img {
+            transform: scale(1.05);
+        }
+
+        .transition-transform {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+            border-color: #80bdff;
+            background-color: #fff !important;
+        }
+
+        .border-3 {
+            border-width: 3px !important;
+        }
+
+        .object-fit-cover {
+            object-fit: cover;
+        }
+
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        .fs-3 {
+            font-size: 1.75rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                position: static !important;
+            }
+
+            .pt-120 {
+                pt-80;
+            }
+
+            .pb-120 {
+                pb-80;
+            }
+        }
+    </style>
 
 @endsection
