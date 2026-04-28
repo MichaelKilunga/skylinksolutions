@@ -9,13 +9,13 @@
                     <div class="page-banner-cont" style="position: relative; z-index: 5;">
                         <h3 class="text-white font-weight-bold mb-1"
                             style="text-shadow: 2px 2px 6px rgba(0,0,0,0.8); font-size: 24px;">
-                            Volunteer with Us</h3>
+                            Our Community</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent p-0 mb-0" style="font-size: 14px;">
                                 <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white"
                                         style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Home</a></li>
                                 <li class="breadcrumb-item active text-white-50" aria-current="page"
-                                    style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Volunteer</li>
+                                    style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Community</li>
                             </ol>
                         </nav>
                     </div>
@@ -34,17 +34,79 @@
                         <div class="mt-3 mx-auto" style="width: 60px; height: 3px; background-color: #007bff;"></div>
                     </div>
                     <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
-                        Are you passionate about technology and community impact? Join SkyLink Solutions as a volunteer
+                        Are you passionate about technology and community impact? Join SkyLink Solutions community
                         and help us drive digital transformation across Tanzania.
                     </p>
                 </div>
             </div>
 
+            {{-- add row for or parterns --}}
+            <div class="row justify-content-center mb-5">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4">
+                        <h4 class="font-weight-bold">Our Trusted Partners</h4>
+                    </div>
+
+                    <div id="partnersSlider" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner">
+                            @forelse($partners->chunk(3) as $chunk)
+                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                    <div class="row">
+                                        @foreach($chunk as $partner)
+                                            <div class="col-md-4">
+                                                <div class="partner-card bg-white p-4 rounded shadow-sm border text-center h-100">
+                                                    <img src="{{ asset($partner->logo_path ?? 'images/placeholder.jpg') }}" alt="{{ $partner->name }}"
+                                                        class="img-fluid mb-3" style="max-height: 60px;">
+                                                    <h5 class="font-weight-bold">{{ $partner->name }}</h5>
+                                                    <p class="text-muted small">{{ $partner->description }}</p>
+                                                    <div class="badge badge-primary-soft text-primary p-2">Activity: {{ $partner->activity }}</div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="carousel-item active">
+                                    <div class="text-center p-5">
+                                        <p class="text-muted">No partners available at the moment.</p>
+                                    </div>
+                                </div>
+                            @endforelse
+                        </div>
+
+                        <a class="carousel-control-prev" href="#partnersSlider" role="button" data-slide="prev">
+                            <span class="fa fa-chevron-left text-dark fs-5" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#partnersSlider" role="button" data-slide="next">
+                            <span class="fa fa-chevron-right text-dark fs-5" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title mb-4">
+                        <h5 class="text-primary font-weight-bold mt-4">Practical Training & Internship
+                        </h5>
+                        <h2 class="mb-3">Kickstart Your Career With Us</h2>
+                        <div class="mt-3 mx-auto" style="width: 60px; height: 3px; background-color: #007bff;"></div>
+                    </div>
+                    <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                        Gain hands-on experience, learn from industry experts, and build your professional network.
+                        We provide a dynamic environment where your ideas matter and your growth is our priority.
+                    </p>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <div
                         class="info-card bg-primary text-white p-5 rounded shadow-lg h-100 position-relative overflow-hidden">
-                        <h3 class="text-white mb-4">Why Volunteer?</h3>
+                        <h3 class="text-white mb-4">Why Join Our Community?</h3>
                         <ul class="list-unstyled">
                             <li class="d-flex mb-4">
                                 <i class="fa fa-check-circle mt-1 mr-3 fs-5"></i>
@@ -66,7 +128,8 @@
                                 <i class="fa fa-check-circle mt-1 mr-3 fs-5"></i>
                                 <div>
                                     <h5 class="text-white">Impact</h5>
-                                    <p class="text-white-50 small mb-0">Help local businesses and institutions transition to
+                                    <p class="text-white-50 small mb-0">Help local businesses and institutions transition
+                                        to
                                         the digital age.</p>
                                 </div>
                             </li>
@@ -102,7 +165,7 @@
                                 <a class="nav-link active text-center font-weight-bold py-3" id="pills-volunteer-tab"
                                     data-toggle="pill" href="#pills-volunteer" role="tab"
                                     aria-controls="pills-volunteer" aria-selected="true">
-                                    <i class="fa fa-handshake-o mr-2"></i> Volunteer
+                                    <i class="fa fa-handshake-o mr-2"></i> Community
                                 </a>
                             </li>
                             <li class="nav-item flex-fill">
@@ -118,15 +181,17 @@
                             <!-- Volunteer Tab -->
                             <div class="tab-pane fade show active" id="pills-volunteer" role="tabpanel"
                                 aria-labelledby="pills-volunteer-tab">
-                                <h4 class="font-weight-bold mb-4">Volunteer Application</h4>
-                                <form action="{{ route('volunteer.apply') }}" method="POST" enctype="multipart/form-data">
+                                <h4 class="font-weight-bold mb-4">Community Application</h4>
+                                <form action="{{ route('volunteer.apply') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <div class="form-group">
                                                 <label class="small font-weight-bold">Full Name</label>
-                                                <input type="text" name="name" class="form-control bg-light border-0"
-                                                    placeholder="John Doe" required>
+                                                <input type="text" name="name"
+                                                    class="form-control bg-light border-0" placeholder="John Doe"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
@@ -169,7 +234,7 @@
                                         <div class="col-md-12">
                                             <button type="submit"
                                                 class="btn btn-primary btn-lg px-5 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit
-                                                Volunteer Application</button>
+                                                Community Application</button>
                                         </div>
                                     </div>
                                 </form>
@@ -351,6 +416,49 @@
             background-repeat: no-repeat;
             background-position: right 0.75rem center;
             background-size: 16px 12px;
+        }
+
+        .partner-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .partner-card:hover {
+            border-color: #007bff;
+            transform: translateY(-5px);
+        }
+
+        .badge-primary-soft {
+            background-color: rgba(0, 123, 255, 0.1);
+            font-weight: 600;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0.8;
+        }
+
+        .carousel-control-prev {
+            left: -20px;
+        }
+
+        .carousel-control-next {
+            right: -20px;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+            background: #f8f9fa;
         }
     </style>
 @endsection

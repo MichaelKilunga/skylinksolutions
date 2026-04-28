@@ -52,7 +52,7 @@
 
 <div class="data-card">
     <div class="table-container">
-        <table>
+        <table class="datatable">
             <thead>
                 <tr>
                     <th>User</th>
@@ -135,7 +135,4 @@
     </div>
 </div>
 
-@if($users->hasPages())
-<div style="padding:20px 0;">{{ $users->links() }}</div>
-@endif
 @endsection

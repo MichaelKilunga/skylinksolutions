@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@yield('title', config('app.name', 'SkyLink Solutions'))</title>
+        <title>@yield('title', $company_setting->company_name ?? 'SkyLink Solutions')</title>
         <meta name="description" content="@yield('meta_description', 'SkyLink Solutions - Digital Technology Company in Morogoro, Tanzania. Software Development, ICT Infrastructure, Security & Surveillance.')">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ $company_setting->favicon ? asset('storage/' . $company_setting->favicon) : asset('favicon.ico') }}" type="image/x-icon">
 
         <!-- ===== Core CSS ===== -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -60,6 +60,36 @@
         <script src="{{ asset('js/validator.min.js') }}"></script>
         <!-- Main theme JS -->
         <script src="{{ asset('js/main.js') }}"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Smooth scrolling for anchor links
+                $('a[href^="{{ url('/') }}#"]').on('click', function(e) {
+                    var target = this.hash;
+                    if (target) {
+                        e.preventDefault();
+                        var $target = $(target);
+                        if ($target.length) {
+                            $('html, body').stop().animate({
+                                'scrollTop': $target.offset().top - 80 // Adjust for header height
+                            }, 900, 'swing');
+                        }
+                    }
+                });
+
+                // Handle hash on page load
+                if (window.location.hash) {
+                    setTimeout(function() {
+                        var $target = $(window.location.hash);
+                        if ($target.length) {
+                            $('html, body').stop().animate({
+                                'scrollTop': $target.offset().top - 80
+                            }, 900, 'swing');
+                        }
+                    }, 500);
+                }
+            });
+        </script>
 
         <!-- ===== Per-page extra scripts ===== -->
         @stack('scripts')

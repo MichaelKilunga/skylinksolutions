@@ -12,7 +12,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::latest('published_at')->paginate(15);
+        $news = News::latest('published_at')->get();
         return view('admin.news.index', compact('news'));
     }
 
@@ -45,7 +45,11 @@ class NewsController extends Controller
             $data['author_image'] = $request->file('author_image')->store('authors', 'public');
         }
 
-        News::create($data);
+        $news = News::create($data);
+
+        if ($news->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($news, 'news');
+        }
 
         return redirect()->route('admin.news.index')->with('success', 'News article created successfully.');
     }
@@ -85,7 +89,12 @@ class NewsController extends Controller
             $data['author_image'] = $request->file('author_image')->store('authors', 'public');
         }
 
+        $wasPublished = $news->is_published;
         $news->update($data);
+
+        if (!$wasPublished && $news->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($news, 'news');
+        }
 
         return redirect()->route('admin.news.index')->with('success', 'News article updated successfully.');
     }
@@ -106,6 +115,11 @@ class NewsController extends Controller
             'is_published' => !$news->is_published,
             'published_at' => !$news->is_published ? now() : $news->published_at,
         ]);
+
+        if ($news->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($news, 'news');
+        }
+
         return back()->with('success', 'News status updated.');
     }
 }

@@ -18,6 +18,11 @@
     .status-inactive { background: rgba(100,116,139,0.15); color: #94a3b8; }
     .btn-del { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 8px; color: #f87171; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .btn-del:hover { background: rgba(239,68,68,0.25); }
+    .btn-status { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+    .btn-activate { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.25); color: #34d399; }
+    .btn-activate:hover { background: rgba(16,185,129,0.25); }
+    .btn-deactivate { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.25); color: #fbbf24; }
+    .btn-deactivate:hover { background: rgba(245,158,11,0.25); }
     .pagination-wrap { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); }
     .empty-state { padding: 60px; text-align: center; color: #64748b; }
     .empty-state i { font-size: 48px; margin-bottom: 16px; display: block; opacity: 0.3; }
@@ -29,12 +34,12 @@
     <h2 style="font-size:20px;font-weight:700;color:#fff;">
         <i class="fas fa-users" style="color:#22d3ee;margin-right:10px;"></i>Subscribers
     </h2>
-    <span style="font-size:13px;color:#64748b;">Total: {{ $subscribers->total() }}</span>
+    <span style="font-size:13px;color:#64748b;">Total: {{ $subscribers->count() }}</span>
 </div>
 
 <div class="table-card">
     @if($subscribers->count())
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>#</th>
@@ -48,7 +53,7 @@
         <tbody>
             @foreach($subscribers as $i => $sub)
             <tr>
-                <td style="color:#475569;">{{ $subscribers->firstItem() + $i }}</td>
+                <td style="color:#475569;">{{ $i + 1 }}</td>
                 <td>
                     <div class="email-cell">
                         <div class="avatar">{{ strtoupper(substr($sub->email, 0, 1)) }}</div>
@@ -65,16 +70,24 @@
                 </td>
                 <td>{{ $sub->created_at->format('M d, Y') }}</td>
                 <td>
-                    <form method="POST" action="{{ route('admin.subscribers.destroy', $sub) }}" onsubmit="return confirm('Remove this subscriber?')">
-                        @csrf @method('DELETE')
-                        <button type="submit" class="btn-del"><i class="fas fa-trash"></i> Remove</button>
-                    </form>
+                    <div style="display:flex; gap:10px;">
+                        <form method="POST" action="{{ route('admin.subscribers.toggle', $sub) }}">
+                            @csrf
+                            <button type="submit" class="btn-status {{ $sub->is_active ? 'btn-deactivate' : 'btn-activate' }}">
+                                <i class="fas {{ $sub->is_active ? 'fa-user-slash' : 'fa-user-check' }}"></i>
+                                {{ $sub->is_active ? 'Deactivate' : 'Activate' }}
+                            </button>
+                        </form>
+                        <form method="POST" action="{{ route('admin.subscribers.destroy', $sub) }}" onsubmit="return confirm('Remove this subscriber?')">
+                            @csrf @method('DELETE')
+                            <button type="submit" class="btn-del"><i class="fas fa-trash"></i> Remove</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="pagination-wrap">{{ $subscribers->links() }}</div>
     @else
     <div class="empty-state">
         <i class="fas fa-user-slash"></i>

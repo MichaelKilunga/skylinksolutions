@@ -3,87 +3,225 @@
 @section('page-title', 'Add New Service')
 
 @push('styles')
-<style>
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #64748b; font-size: 13px; text-decoration: none; margin-bottom: 20px; transition: color 0.2s; }
-    .back-link:hover { color: #60a5fa; }
-    .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; max-width: 680px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-group { margin-bottom: 22px; }
-    .form-group label { display: block; font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; }
-    .form-control { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #e2e8f0; font-size: 14px; font-family: 'Inter', sans-serif; transition: all 0.2s; outline: none; resize: vertical; }
-    .form-control:focus { border-color: #8b5cf6; background: rgba(139,92,246,0.08); box-shadow: 0 0 0 3px rgba(139,92,246,0.12); }
-    .form-control::placeholder { color: #475569; }
-    .form-hint { font-size: 11px; color: #475569; margin-top: 5px; }
-    .form-error { font-size: 12px; color: #f87171; margin-top: 6px; }
-    .icon-preview { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
-    .icon-preview .preview-box { width: 44px; height: 44px; background: rgba(139,92,246,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #a78bfa; }
-    .toggle-row { display: flex; align-items: center; gap: 12px; }
-    .toggle-switch { position: relative; width: 44px; height: 24px; }
-    .toggle-switch input { opacity: 0; width: 0; height: 0; }
-    .toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; cursor: pointer; transition: 0.3s; }
-    .toggle-slider:before { content:''; position: absolute; width: 18px; height: 18px; left: 2px; top: 2px; background: #94a3b8; border-radius: 50%; transition: 0.3s; }
-    input:checked + .toggle-slider { background: rgba(16,185,129,0.3); border-color: rgba(16,185,129,0.5); }
-    input:checked + .toggle-slider:before { transform: translateX(20px); background: #10b981; }
-    .toggle-label { font-size: 14px; color: #94a3b8; }
-    .form-actions { display: flex; gap: 12px; margin-top: 28px; }
-    .btn-submit { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg,#8b5cf6,#7c3aed); border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(139,92,246,0.4); }
-    .btn-cancel { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #94a3b8; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .btn-cancel:hover { background: rgba(255,255,255,0.1); color: #fff; }
-</style>
+    <style>
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #60a5fa;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 800px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            outline: none;
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.08);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+        }
+
+        .form-control::placeholder {
+            color: #475569;
+        }
+
+        .form-error {
+            font-size: 12px;
+            color: #f87171;
+            margin-top: 6px;
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-slider:before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 2px;
+            top: 2px;
+            background: #94a3b8;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        input:checked+.toggle-slider {
+            background: rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+
+        input:checked+.toggle-slider:before {
+            transform: translateX(20px);
+            background: #10b981;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-cancel {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+    </style>
 @endpush
 
 @section('content')
-<a href="{{ route('admin.services.index') }}" class="back-link">
-    <i class="fas fa-arrow-left"></i> Back to Services
-</a>
-<div class="form-card">
-    <form method="POST" action="{{ route('admin.services.store') }}">
-        @csrf
-        <div class="form-row">
-            <div class="form-group">
-                <label for="title">Service Title <span style="color:#f87171;">*</span></label>
-                <input type="text" id="title" name="title" class="form-control" placeholder="e.g. CCTV Installation" value="{{ old('title') }}" required>
-                @error('title')<div class="form-error">{{ $message }}</div>@enderror
-            </div>
-            <div class="form-group">
-                <label for="icon">Icon Class</label>
-                <input type="text" id="icon" name="icon" class="form-control" placeholder="fa-camera" value="{{ old('icon', 'fa-cogs') }}" oninput="updatePreview(this.value)">
-                <div class="form-hint">Use Font Awesome class e.g. <code style="color:#a78bfa;">fa-network-wired</code></div>
-                <div class="icon-preview">
-                    <div class="preview-box" id="iconPreview"><i class="fas fa-cogs" id="previewIcon"></i></div>
-                    <span style="font-size:12px;color:#64748b;">Preview</span>
+    <a href="{{ route('admin.services.index') }}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Services
+    </a>
+    <div class="form-card">
+        <form method="POST" action="{{ route('admin.services.store') }}" enctype="multipart/form-data">
+            @csrf
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                <div class="form-group">
+                    <label for="title">Service Title <span style="color:#f87171;">*</span></label>
+                    <input type="text" id="title" name="title" class="form-control"
+                        placeholder="e.g. Software Development" value="{{ old('title') }}" required>
+                    @error('title')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="icon">Icon Class</label>
+                    <input type="text" id="icon" name="icon" class="form-control" placeholder="fa-code"
+                        value="{{ old('icon', 'fa-cogs') }}">
+                    <div style="font-size:11px; color:#64748b; margin-top:5px;">FontAwesome class (e.g., fa-desktop)</div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Brief description of this service...">{{ old('description') }}</textarea>
-            @error('description')<div class="form-error">{{ $message }}</div>@enderror
-        </div>
-        <div class="form-group">
-            <label>Active</label>
-            <div class="toggle-row">
-                <label class="toggle-switch">
-                    <input type="checkbox" name="is_active" {{ old('is_active', true) ? 'checked' : '' }}>
-                    <span class="toggle-slider"></span>
-                </label>
-                <span class="toggle-label">Mark service as active/visible</span>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn-submit"><i class="fas fa-plus-circle"></i> Add Service</button>
-            <a href="{{ route('admin.services.index') }}" class="btn-cancel">Cancel</a>
-        </div>
-    </form>
-</div>
-@endsection
 
-@push('scripts')
-<script>
-function updatePreview(val) {
-    const icon = document.getElementById('previewIcon');
-    icon.className = 'fas ' + (val || 'fa-cogs');
-}
-</script>
-@endpush
+            <div class="form-group">
+                <label for="short_description">Short Description</label>
+                <textarea id="short_description" name="short_description" class="form-control" rows="2"
+                    placeholder="A brief catchphrase or summary...">{{ old('short_description') }}</textarea>
+                @error('short_description')
+                    <div class="form-error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="description">Full Description</label>
+                <textarea id="description" name="description" class="form-control" rows="10"
+                    placeholder="Detailed content for the service page...">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="form-error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Active Status</label>
+                <div class="toggle-row">
+                    <label class="toggle-switch">
+                        <input type="hidden" name="status" value="0">
+                        <input type="checkbox" name="status" value="1" {{ old('status', true) ? 'checked' : '' }}>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label" style="color:#94a3b8; font-size:14px;">Visible in navigation and service
+                        pages</span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit"><i class="fas fa-plus-circle"></i> Create Service</button>
+                <a href="{{ route('admin.services.index') }}" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+@endsection

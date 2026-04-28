@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
-use App\Models\AdminService;
+use App\Models\Service;
 use App\Models\ContactMessage;
 use App\Models\Subscriber;
 use App\Models\Volunteer;
@@ -20,7 +20,7 @@ class DashboardController extends Controller
             'subscribers'   => Subscriber::count(),
             'volunteers'    => Volunteer::count(),
             'announcements' => Announcement::count(),
-            'services'      => AdminService::count(),
+            'services'      => Service::count(),
             'visitors'      => Visitor::count(),
             'today_visitors'=> Visitor::whereDate('visited_at', now()->today())->count(),
         ];

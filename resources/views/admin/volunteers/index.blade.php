@@ -29,12 +29,12 @@
     <h2 style="font-size:20px;font-weight:700;color:#fff;">
         <i class="fas fa-hands-helping" style="color:#34d399;margin-right:10px;"></i>Volunteers
     </h2>
-    <span style="font-size:13px;color:#64748b;">Total: {{ $volunteers->total() }}</span>
+    <span style="font-size:13px;color:#64748b;">Total: {{ $volunteers->count() }}</span>
 </div>
 
 <div class="table-card">
     @if($volunteers->count())
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>#</th>
@@ -49,7 +49,7 @@
         <tbody>
             @foreach($volunteers as $i => $vol)
             <tr>
-                <td style="color:#475569;">{{ $volunteers->firstItem() + $i }}</td>
+                <td style="color:#475569;">{{ $i + 1 }}</td>
                 <td>
                     <div class="name-cell">
                         <div class="avatar">{{ strtoupper(substr($vol->name, 0, 1)) }}</div>
@@ -86,7 +86,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="pagination-wrap">{{ $volunteers->links() }}</div>
     @else
     <div class="empty-state">
         <i class="fas fa-user-friends"></i>

@@ -38,7 +38,7 @@
 </div>
 
 <div class="table-container">
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>Order</th>

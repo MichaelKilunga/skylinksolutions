@@ -10,7 +10,7 @@ class AnnouncementController extends Controller
 {
     public function index()
     {
-        $announcements = Announcement::latest()->paginate(15);
+        $announcements = Announcement::latest()->get();
         return view('admin.announcements.index', compact('announcements'));
     }
 
@@ -29,7 +29,11 @@ class AnnouncementController extends Controller
         $data['is_published'] = $request->has('is_published');
         $data['published_at'] = $data['is_published'] ? now() : null;
 
-        Announcement::create($data);
+        $announcement = Announcement::create($data);
+
+        if ($announcement->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($announcement, 'announcement');
+        }
 
         return redirect()->route('admin.announcements.index')->with('success', 'Announcement created successfully.');
     }
@@ -49,7 +53,12 @@ class AnnouncementController extends Controller
         $data['is_published'] = $request->has('is_published');
         $data['published_at'] = $data['is_published'] ? ($announcement->published_at ?? now()) : null;
 
+        $wasPublished = $announcement->is_published;
         $announcement->update($data);
+
+        if (!$wasPublished && $announcement->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($announcement, 'announcement');
+        }
 
         return redirect()->route('admin.announcements.index')->with('success', 'Announcement updated successfully.');
     }
@@ -66,6 +75,11 @@ class AnnouncementController extends Controller
             'is_published' => !$announcement->is_published,
             'published_at' => !$announcement->is_published ? now() : null,
         ]);
+
+        if ($announcement->is_published) {
+            \App\Jobs\NotifySubscribersOfNewContent::dispatch($announcement, 'announcement');
+        }
+
         return back()->with('success', 'Announcement status updated.');
     }
 }

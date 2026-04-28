@@ -227,8 +227,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mb-lg-0">
                     <div class="footer-about">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('images/assets/logo/logo-01.png') }}" alt="SkyLink Solutions"
-                                style="height: 40px; filter: brightness(10);">
+                            <img src="{{ $company_setting->logo ? asset('storage/' . $company_setting->logo) : asset('images/assets/logo/logo-01.png') }}" alt="{{ $company_setting->company_name ?? 'SkyLink Solutions' }}"
+                                style="height: 40px; {{ $company_setting->logo ? '' : 'filter: brightness(10);' }}">
                         </a>
                         <p>We're an adroit digital technology company
                             providing excellence digital experience in software development, ICT infrastructure,
@@ -254,7 +254,7 @@
                         <ul>
                             <li><a href="{{ url('/') }}"><i class="fa fa-angle-right"></i> Home</a></li>
                             <li><a href="{{ url('/about') }}"><i class="fa fa-angle-right"></i> About Us</a></li>
-                            <li><a href="{{ url('/volunteer') }}"><i class="fa fa-angle-right"></i> Our Community</a>
+                            <li><a href="{{ url('/community') }}"><i class="fa fa-angle-right"></i> Our Community</a>
                             </li>
                             <li><a href="{{ url('/contact') }}"><i class="fa fa-angle-right"></i> Contact</a></li>
                             <li><a href="{{ url('/news') }}"><i class="fa fa-angle-right"></i> News</a></li>

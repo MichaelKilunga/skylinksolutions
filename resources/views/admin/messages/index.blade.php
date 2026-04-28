@@ -54,12 +54,12 @@
             <span class="badge-count">{{ $unread }} unread</span>
         @endif
     </h2>
-    <span style="font-size:13px;color:#64748b;">Total: {{ $messages->total() }}</span>
+    <span style="font-size:13px;color:#64748b;">Total: {{ $messages->count() }}</span>
 </div>
 
 <div class="table-card">
     @if($messages->count())
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>Sender</th>
@@ -103,7 +103,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="pagination-wrap">{{ $messages->links() }}</div>
     @else
     <div class="empty-state">
         <i class="fas fa-inbox"></i>

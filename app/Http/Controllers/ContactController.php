@@ -30,11 +30,30 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'unique:subscribers,email'],
+            'name'  => ['nullable', 'string', 'max:255'],
         ]);
 
-        \App\Models\Subscriber::create($data);
+        $subscriber = \App\Models\Subscriber::create($data);
 
-        return redirect()->back()->with('success', 'Thank you for subscribing to our newsletter!');
+        try {
+            \Illuminate\Support\Facades\Mail::to($subscriber->email)->send(new \App\Mail\NewsletterSubscribed($subscriber));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Newsletter subscription email failed: ' . $e->getMessage());
+        }
+
+        return redirect()->back()->with('success', 'Thank you for subscribing! A confirmation email has been sent to ' . $subscriber->email);
+    }
+
+    public function unsubscribe($token)
+    {
+        $subscriber = \App\Models\Subscriber::where('unsubscribe_token', $token)->first();
+
+        if ($subscriber) {
+            $subscriber->update(['is_active' => false]);
+            return view('news.unsubscribed', ['email' => $subscriber->email]);
+        }
+
+        return redirect('/news')->with('error', 'Invalid unsubscription token.');
     }
 
     public function requestQuote(Request $request)

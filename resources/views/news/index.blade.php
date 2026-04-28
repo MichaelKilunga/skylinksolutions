@@ -205,43 +205,6 @@
             </div>
         </div>
     </section>
-    <!--====== NEWS PART END ======-->
-
-    <!--====== NEWSLETTER PART START ======-->
-    {{-- <section id="newsletter" class="pt-70 pb-70 bg-primary text-white position-relative overflow-hidden">
-        <div class="container">
-            <div class="row align-items-center mt-4 p-4">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="text-white font-weight-bold mb-3">Never Miss an Update</h2>
-                    <p class="mb-0 text-white-50">Subscribe to our newsletter and receive the latest news, system updates,
-                        and technology insights directly in your inbox.</p>
-                </div>
-                <div class="col-lg-6">
-                    @if (session('success'))
-                        <div class="alert alert-light alert-dismissible fade show mb-3" role="alert">
-                            <strong>Success!</strong> {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    <form action="{{ route('newsletter.subscribe') }}" method="POST"
-                        class="newsletter-form position-relative">
-                        @csrf
-                        <input type="email" name="email" class="form-control form-control-lg rounded-pill px-4"
-                            placeholder="Your Email Address" style="height: 60px;" required>
-                        <button type="submit" class="btn btn-dark position-absolute rounded-pill px-4"
-                            style="top: 5px; right: 5px; bottom: 5px;">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Decorative Circle -->
-        <div class="decorative-circle"
-            style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;">
-        </div>
-    </section> --}}
-    <!--====== NEWSLETTER PART END ======-->
 
     <style>
         .object-fit-cover {

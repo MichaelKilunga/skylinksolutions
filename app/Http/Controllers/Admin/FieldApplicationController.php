@@ -11,7 +11,7 @@ class FieldApplicationController extends Controller
 {
     public function index()
     {
-        $applications = FieldApplication::latest()->paginate(15);
+        $applications = FieldApplication::latest()->get();
         return view('admin.field-applications.index', compact('applications'));
     }
 

@@ -44,8 +44,8 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <!-- Logo -->
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ asset('images/assets/logo/logo-01.png') }}" alt="SkyLink Solutions"
-                                style="height: 65px;">
+                            <img src="{{ $company_setting->logo ? asset('storage/' . $company_setting->logo) : asset('images/assets/logo/logo-01.png') }}"
+                                alt="{{ $company_setting->company_name ?? 'SkyLink Solutions' }}" style="height: 65px;">
                         </a>
 
                         <!-- Mobile toggle -->
@@ -64,28 +64,24 @@
                                 <li class="nav-item {{ request()->is('about') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ url('/about') }}">About</a>
                                 </li>
+                                @php
+                                    $services = \App\Models\Service::where('status', 1)->get();
+                                @endphp
 
-                                <!-- Services Dropdown -->
-                                <li
-                                    class="nav-item dropdown {{ request()->is('biometry', 'cctv-camera', 'electric-fencing', 'graphics', 'ict-cleaning', 'ict-maintenance', 'networking', 'remote', 'setups', 'software-development') ? 'active' : '' }}">
-                                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <li class="nav-item dropdown {{ request()->is('services/*') ? 'active' : '' }}">
+                                    <a class="nav-link dropdown-toggle" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         Services
                                     </a>
+
                                     <div class="dropdown-menu premium-dropdown" aria-labelledby="servicesDropdown">
-                                        <a class="dropdown-item" href="{{ url('/software-development') }}">Software
-                                            Development</a>
-                                        <a class="dropdown-item" href="{{ url('/networking') }}">Computer
-                                            Networking</a>
-                                        <a class="dropdown-item" href="{{ url('/cctv-camera') }}">CCTV Camera</a>
-                                        <a class="dropdown-item" href="{{ url('/electric-fencing') }}">Electric
-                                            Fencing</a>
-                                        <a class="dropdown-item" href="{{ url('/biometry') }}">Biometric &
-                                            Access Control</a>
+                                        @foreach ($services as $srv)
+                                            <a class="dropdown-item" href="{{ url('/services/' . $srv->slug) }}">
+                                                {{ $srv->title }}
+                                            </a>
+                                        @endforeach
                                     </div>
                                 </li>
-
                                 <li class="nav-item dropdown {{ request()->is('project') ? 'active' : '' }}">
                                     <a class="nav-link dropdown-toggle" href="{{ url('/project') }}"
                                         id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -102,14 +98,12 @@
                                 <li class="nav-item {{ request()->is('news') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ url('/news') }}">News</a>
                                 </li>
-                                <li class="nav-item {{ request()->is('volunteer') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ url('/volunteer') }}">Community</a>
+                                <li class="nav-item {{ request()->is('community') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ url('/community') }}">Community</a>
                                 </li>
                                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                                 </li>
-
-
                             </ul>
                         </div><!-- navbar collapse -->
                     </nav> <!-- navbar -->

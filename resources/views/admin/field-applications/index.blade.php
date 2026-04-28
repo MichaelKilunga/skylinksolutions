@@ -29,12 +29,12 @@
     <h2 style="font-size:20px;font-weight:700;color:#fff;">
         <i class="fas fa-graduation-cap" style="color:#60a5fa;margin-right:10px;"></i>Field Applications
     </h2>
-    <span style="font-size:13px;color:#64748b;">Total: {{ $applications->total() }}</span>
+    <span style="font-size:13px;color:#64748b;">Total: {{ $applications->count() }}</span>
 </div>
 
 <div class="table-card">
     @if($applications->count())
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>#</th>
@@ -48,7 +48,7 @@
         <tbody>
             @foreach($applications as $i => $app)
             <tr>
-                <td style="color:#475569;">{{ $applications->firstItem() + $i }}</td>
+                <td style="color:#475569;">{{ $i + 1 }}</td>
                 <td>
                     <div class="name-cell">
                         <div class="avatar">{{ strtoupper(substr($app->full_name, 0, 1)) }}</div>
@@ -84,7 +84,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="pagination-wrap">{{ $applications->links() }}</div>
     @else
     <div class="empty-state">
         <i class="fas fa-file-invoice"></i>

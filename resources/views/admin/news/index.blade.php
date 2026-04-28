@@ -43,7 +43,7 @@
 </div>
 
 <div class="news-table-container">
-    <table>
+    <table class="datatable">
         <thead>
             <tr>
                 <th>Article</th>
@@ -103,9 +103,4 @@
     </table>
 </div>
 
-@if($news->hasPages())
-<div style="margin-top:20px;">
-    {{ $news->links() }}
-</div>
-@endif
 @endsection

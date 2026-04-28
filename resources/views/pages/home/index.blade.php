@@ -2,69 +2,55 @@
 
 @section('content')
     <section id="slider-part" class="slider-active">
-        <div class="single-slider bg_cover d-flex align-items-center"
-            style="background-image: url({{ asset('images/assets/hygiene/h3.PNG') }})" data-overlay="7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-11">
-                        <div class="slider-cont hero-glass-card text-center" data-animation="fadeIn" data-delay="0.5s">
-                            <h1 data-animation="bounceInLeft" data-delay="1s">ICT Cleaning and Hygiene</h1>
-                            <p data-animation="fadeInUp" data-delay="1.3s">
-                                Specialized in professional cleaning of ICT equipment: laptops, photocopiers, servers, and
-                                data racks. We ensure your critical infrastructure remains spotless and cable-aligned.
-                            </p>
-                            <div class="slider-btn mt-30" data-animation="fadeInUp" data-delay="1.5s">
-                                <a href="{{ url('/ict-cleaning') }}" class="main-btn">Learn More</a>
-                                <a href="{{ url('/contact') }}" class="main-btn main-btn-2 ml-15">Get a Quote</a>
+        @foreach ($sliders as $slider)
+            <div class="single-slider bg_cover d-flex align-items-center"
+                style="background-image: url({{ asset($slider->image) }})" data-overlay="7">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <div class="slider-cont hero-glass-card text-center" data-animation="fadeIn" data-delay="0.5s">
+                                <h1 data-animation="bounceInLeft" data-delay="1s">{{ $slider->title }}</h1>
+                                <p data-animation="fadeInUp" data-delay="1.3s">
+                                    {{ $slider->description }}
+                                </p>
+                                <div class="slider-btn mt-30" data-animation="fadeInUp" data-delay="1.5s">
+                                    @if ($slider->btn1_text && $slider->btn1_url)
+                                        @php
+                                            $btn1Url = trim($slider->btn1_url);
+                                            $btn1IsExternal = !str_starts_with($btn1Url, '/') && (
+                                                preg_match('/^https?:\/\//i', $btn1Url) ||
+                                                preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn1Url)
+                                            );
+                                            $btn1Href = $btn1IsExternal
+                                                ? (preg_match('/^https?:\/\//i', $btn1Url) ? $btn1Url : 'https://' . $btn1Url)
+                                                : url($btn1Url);
+                                        @endphp
+                                        <a href="{{ $btn1Href }}" class="main-btn"
+                                            @if($btn1IsExternal) target="_blank" rel="noopener noreferrer" @endif
+                                        >{{ $slider->btn1_text }}</a>
+                                    @endif
+                                    @if ($slider->btn2_text && $slider->btn2_url)
+                                        @php
+                                            $btn2Url = trim($slider->btn2_url);
+                                            $btn2IsExternal = !str_starts_with($btn2Url, '/') && (
+                                                preg_match('/^https?:\/\//i', $btn2Url) ||
+                                                preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn2Url)
+                                            );
+                                            $btn2Href = $btn2IsExternal
+                                                ? (preg_match('/^https?:\/\//i', $btn2Url) ? $btn2Url : 'https://' . $btn2Url)
+                                                : url($btn2Url);
+                                        @endphp
+                                        <a href="{{ $btn2Href }}" class="main-btn main-btn-2 ml-15"
+                                            @if($btn2IsExternal) target="_blank" rel="noopener noreferrer" @endif
+                                        >{{ $slider->btn2_text }}</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- single slider -->
-
-        <div class="single-slider bg_cover d-flex align-items-center"
-            style="background-image: url({{ asset('images/slider/new/about.jpg') }})" data-overlay="7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-11">
-                        <div class="slider-cont hero-glass-card text-center" data-animation="fadeIn" data-delay="0.5s">
-                            <h1 data-animation="bounceInLeft" data-delay="1s">Web Design & Development</h1>
-                            <p data-animation="fadeInUp" data-delay="1.3s">
-                                Crafting unique digital identities that make your business stand out. From interactive
-                                websites to powerful mobile applications, we build solutions that fulfill your vision.
-                            </p>
-                            <div class="slider-btn mt-30" data-animation="fadeInUp" data-delay="1.5s">
-                                <a href="{{ url('/software-development') }}" class="main-btn">Our Solutions</a>
-                                <a href="{{ url('/contact') }}" class="main-btn main-btn-2 ml-15">Start a Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- single slider -->
-
-        <!-- single slider -->
-
-        <div class="single-slider bg_cover d-flex align-items-center"
-            style="background-image: url({{ asset('images/slider/team1.jpg') }})" data-overlay="7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-11">
-                        <div class="slider-cont hero-glass-card text-center" data-animation="fadeIn" data-delay="0.5s">
-                            <h1 data-animation="bounceInLeft" data-delay="1s">Meet Our Experts</h1>
-                            <p data-animation="fadeInUp" data-delay="1.3s">
-                                A team of experienced specialists in ICT hygiene, server systems, and digital innovation. We
-                                combine years of expertise to deliver the most elaborate systems imaginable.
-                            </p>
-                            <div class="slider-btn mt-30" data-animation="fadeInUp" data-delay="1.5s">
-                                <a href="{{ url('/contact') }}" class="main-btn">Work With Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- single slider -->
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </div> <!-- single slider -->
+        @endforeach
     </section>
 
     <!--====== CORE VALUES START ======-->
@@ -79,51 +65,17 @@
                 </div>
             </div>
             <div class="row justify-content-center mb-2">
-                <div class="col-lg col-md-6 mb-4">
-                    <div class="value-card mt-30" data-animation="fadeInUp" data-delay="0.2s">
-                        <div class="value-icon">
-                            <i class="fa fa-heart"></i>
+                @foreach ($coreValues as $value)
+                    <div class="col-lg col-md-6 mb-4">
+                        <div class="value-card mt-30" data-animation="fadeInUp" data-delay="0.2s">
+                            <div class="value-icon">
+                                <i class="fa {{ $value->icon }}"></i>
+                            </div>
+                            <h3>{{ $value->title }}</h3>
+                            <p>{{ $value->description }}</p>
                         </div>
-                        <h3>Customer Obsession</h3>
-                        <p>We start with the customer and work backwards, ensuring every solution adds real value.</p>
                     </div>
-                </div>
-                <div class="col-lg col-md-6 mb-4">
-                    <div class="value-card mt-30" data-animation="fadeInUp" data-delay="0.4s">
-                        <div class="value-icon">
-                            <i class="fa fa-bullseye"></i>
-                        </div>
-                        <h3>Results Oriented</h3>
-                        <p>We focus on delivering measurable impact and high-quality outcomes for our clients.</p>
-                    </div>
-                </div>
-                <div class="col-lg col-md-6 mb-4">
-                    <div class="value-card mt-30" data-animation="fadeInUp" data-delay="0.6s">
-                        <div class="value-icon">
-                            <i class="fa fa-rocket"></i>
-                        </div>
-                        <h3>Digital Innovation</h3>
-                        <p>We embrace cutting-edge technology to create forward-thinking solutions.</p>
-                    </div>
-                </div>
-                <div class="col-lg col-md-6 mb-4">
-                    <div class="value-card mt-30" data-animation="fadeInUp" data-delay="0.8s">
-                        <div class="value-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <h3>Team Working & Diversity</h3>
-                        <p>We believe in the power of collaboration and diverse perspectives.</p>
-                    </div>
-                </div>
-                <div class="col-lg col-md-6 mb-4">
-                    <div class="value-card mt-30" data-animation="fadeInUp" data-delay="1.0s">
-                        <div class="value-icon">
-                            <i class="fa fa-magic"></i>
-                        </div>
-                        <h3>Simplicity at its Best</h3>
-                        <p>We strip away complexity to deliver intuitive and elegant systems.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -143,54 +95,24 @@
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mt-4">
-                    <div class="service-card mt-15">
-                        <div class="icon-box">
-                            <i class="fa fa-code"></i>
+            <div class="row justify-content-center">
+                @forelse ($services as $service)
+                    <div class="col-lg-3 col-md-6 mt-4">
+                        <div class="service-card mt-15">
+                            <div class="icon-box">
+                                <i class="fa {{ $service->icon ?? 'fa-cogs' }}"></i>
+                            </div>
+                            <h3>{{ $service->title }}</h3>
+                            <p>{{ Str::limit($service->short_description ?? $service->description, 100) }}</p>
+                            <a href="{{ url($service->slug ?? '#') }}" class="premium-link">Explore <i
+                                    class="fa fa-arrow-right"></i></a>
                         </div>
-                        <h3>Software Development</h3>
-                        <p>Web-based systems, mobile applications, and custom automation solutions tailored for your
-                            business needs.</p>
-                        <a href="{{ url('/software-development') }}" class="premium-link">Explore <i
-                                class="fa fa-arrow-right"></i></a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mt-4">
-                    <div class="service-card mt-15">
-                        <div class="icon-box">
-                            <i class="fa fa-shield"></i>
-                        </div>
-                        <h3>Security & Surveillance</h3>
-                        <p>Advanced CCTV installation, electric fencing, and physical security systems for homes and
-                            offices.</p>
-                        <a href="{{ url('/cctv-camera') }}" class="premium-link">Explore <i
-                                class="fa fa-arrow-right"></i></a>
+                @empty
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">No services currently available.</p>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mt-4">
-                    <div class="service-card mt-15">
-                        <div class="icon-box">
-                            <i class="fa fa-wifi"></i>
-                        </div>
-                        <h3>Computer Networking</h3>
-                        <p>Reliable LAN setups, intercom systems, and enterprise-grade networking infrastructure.</p>
-                        <a href="{{ url('/networking') }}" class="premium-link">Explore <i
-                                class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mt-4">
-                    <div class="service-card mt-15">
-                        <div class="icon-box">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                        <h3>Access Control Systems</h3>
-                        <p>Biometric locks, time attendance systems, and secure entry management for organizations.</p>
-                        <a href="{{ url('/biometry') }}" class="premium-link">Explore <i
-                                class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                @endforelse
             </div> <!-- row -->
         </div> <!-- container -->
     </section>
@@ -201,39 +123,35 @@
             <div class="row align-items-center mt-4">
                 <div class="col-lg-6">
                     <div class="about-image-wrapper">
-                        <img src="{{ asset('images/slider/new/about.jpg') }}" alt="About SkyLink"
+                        <img src="{{ asset($settings->about_image ?? 'images/slider/new/about.jpg') }}" alt="About SkyLink"
                             class="img-fluid rounded shadow-lg">
                         <div class="experience-badge">
-                            <span>5+</span>
-                            <p>Years of Excellence</p>
+                            <span>{{ $settings->experience_years ?? '5+' }}</span>
+                            <p>{{ $settings->experience_text ?? 'Years of Excellence' }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-cont-2 pl-40">
                         <div class="section-title">
-                            <h5>Always here for you</h5>
-                            <h2>Welcome to SkyLink Solutions</h2>
+                            <h5>{{ $settings->about_subtitle ?? 'Always here for you' }}</h5>
+                            <h2>{{ $settings->about_title ?? 'Welcome to SkyLink Solutions' }}</h2>
                         </div>
-                        <p class="mt-25">We’re an adroit digital technology company with passionate and skillful expertise
-                            providing excellence digital experience in software development, ICT infrastructure, security
-                            and surveillance.</p>
-                        <p class="mt-15">The company is using technology to create digital products and services with a
-                            belief of attaining a future digital world where innovation meets reality. Our solutions enable
-                            seamless communication and data management in both business and personal environments.</p>
+                        <p class="mt-25">{{ $settings->about_description_1 }}</p>
+                        <p class="mt-15">{{ $settings->about_description_2 }}</p>
 
                         <div class="about-features mt-30">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="feature-item">
                                         <i class="fa fa-rocket text-primary"></i>
-                                        <span>Digital Innovation</span>
+                                        <span>{{ $settings->about_feature_1 ?? 'Digital Innovation' }}</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="feature-item">
                                         <i class="fa fa-users text-primary"></i>
-                                        <span>Expert Team</span>
+                                        <span>{{ $settings->about_feature_2 ?? 'Expert Team' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -259,71 +177,35 @@
                 <div class="col-lg-6">
                     <div class="serve-main-card mt-30">
                         <div class="serve-img">
-                            <img src="{{ asset('images/all-icon/w.jpg') }}" alt="Wide Coverage"
+                            <img src="{{ asset($settings->nationwide_image ?? 'images/all-icon/w.jpg') }}" alt="Wide Coverage"
                                 class="img-fluid rounded shadow">
                         </div>
                         <div class="serve-content mt-30">
-                            <h3>Nationwide Digital Connectivity</h3>
-                            <p>We connect groups across the country through our premier ICT services. From Morogoro to every
-                                corner of Tanzania, we provide on-site support, software development, and infrastructure
-                                excellence. We’ve partnered with law firms, charities, construction companies, and more to
-                                drive digital transformation.</p>
+                            <h3>{{ $settings->nationwide_title ?? 'Nationwide Digital Connectivity' }}</h3>
+                            <p>{{ $settings->nationwide_description }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="serve-list">
-                        <div class="single-serve-item mt-30 p-4 bg-white rounded shadow-sm border-left border-primary">
-                            <div class="row align-items-center">
-                                <div class="col-sm-4">
-                                    <div class="serve-thumb">
-                                        <img src="{{ asset('images/assets/project.PNG') }}" alt="Businesses"
-                                            class="img-fluid rounded">
+                        @foreach ($nationwideItems as $item)
+                            <div class="single-serve-item mt-30 p-4 bg-white rounded shadow-sm border-left border-primary">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-4">
+                                        <div class="serve-thumb">
+                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
+                                                class="img-fluid rounded">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="serve-info">
-                                        <h4 class="h5 mb-2">Businesses & Organizations</h4>
-                                        <p class="small text-muted">Empowering startups and enterprises with smart
-                                            automation and reliable ICT support for sustainable growth.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-serve-item mt-30 p-4 bg-white rounded shadow-sm border-left border-primary">
-                            <div class="row align-items-center">
-                                <div class="col-sm-4">
-                                    <div class="serve-thumb">
-                                        <img src="{{ asset('images/assets/family.PNG') }}" alt="Individuals"
-                                            class="img-fluid rounded">
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="serve-info">
-                                        <h4 class="h5 mb-2">Individuals & Entrepreneurs</h4>
-                                        <p class="small text-muted">Protecting homes and offices with smart security
-                                            solutions and reliable networking systems.</p>
+                                    <div class="col-sm-8">
+                                        <div class="serve-info">
+                                            <h4 class="h5 mb-2">{{ $item->title }}</h4>
+                                            <p class="small text-muted">{{ $item->description }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-serve-item mt-30 p-4 bg-white rounded shadow-sm border-left border-primary">
-                            <div class="row align-items-center">
-                                <div class="col-sm-4">
-                                    <div class="serve-thumb">
-                                        <img src="{{ asset('images/assets/Capture.PNG') }}" alt="Government"
-                                            class="img-fluid rounded">
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="serve-info">
-                                        <h4 class="h5 mb-2">Government & Institutions</h4>
-                                        <p class="small text-muted">Providing secure surveillance and digital solutions
-                                            that improve public service delivery and asset protection.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div> <!-- row -->

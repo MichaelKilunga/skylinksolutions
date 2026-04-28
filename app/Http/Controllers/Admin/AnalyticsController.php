@@ -24,7 +24,7 @@ class AnalyticsController extends Controller
         ];
 
         // Logs
-        $visitors = Visitor::latest()->paginate(25);
+        $visitors = Visitor::latest()->get();
 
         // Grouped Stats for Charts (Top Countries, Devices, etc.)
         $topCountries = Visitor::select('country', DB::raw('count(*) as count'))

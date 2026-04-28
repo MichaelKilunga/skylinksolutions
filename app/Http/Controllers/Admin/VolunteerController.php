@@ -9,7 +9,7 @@ class VolunteerController extends Controller
 {
     public function index()
     {
-        $volunteers = Volunteer::latest()->paginate(15);
+        $volunteers = Volunteer::latest()->get();
         return view('admin.volunteers.index', compact('volunteers'));
     }
 

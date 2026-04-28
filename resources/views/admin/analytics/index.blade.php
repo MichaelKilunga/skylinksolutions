@@ -87,7 +87,7 @@
         <h3 style="font-size: 16px; font-weight: 700; color: #fff;">Recent Visitor Logs</h3>
     </div>
     <div class="table-container">
-        <table>
+        <table class="datatable">
             <thead>
                 <tr>
                     <th>Visitor Info</th>
@@ -125,9 +125,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="pagination-box">
-        {{ $visitors->links() }}
     </div>
 </div>
 @endsection

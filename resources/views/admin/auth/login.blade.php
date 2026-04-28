@@ -83,9 +83,12 @@
 
         .error-box { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #fca5a5; display: flex; align-items: center; gap: 10px; }
 
-        .remember-row { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+        .remember-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .remember-col { display: flex; align-items: center; gap: 10px; }
         .remember-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: #3b82f6; cursor: pointer; }
         .remember-row label { font-size: 13px; color: #94a3b8; cursor: pointer; }
+        .forgot-link { font-size: 13px; color: #3b82f6; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .forgot-link:hover { color: #60a5fa; text-decoration: underline; }
 
         .btn-login {
             width: 100%; padding: 14px;
@@ -157,8 +160,15 @@
                 </div>
 
                 <div class="remember-row">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Keep me signed in</label>
+                    <div class="remember-col">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Keep me signed in</label>
+                    </div>
+                    @if (Route::has('admin.password.request'))
+                        <a href="{{ route('admin.password.request') }}" class="forgot-link">
+                            Forgot your password?
+                        </a>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn-login">
