@@ -105,9 +105,9 @@
                                 <i class="fa {{ $service->icon ?? 'fa-cogs' }}"></i>
                             </div>
                             <h3>{{ $service->title }}</h3>
-                            <p>{{ Str::limit($service->description, 100) }}</p>
-                            <a href="{{ url($service->slug ?? '#') }}" class="premium-link">Explore <i
-                                    class="fa fa-arrow-right"></i></a>
+                            <p>{{ Str::limit($service->description, 120) }}</p>
+                            {{-- <a href="{{ url($service->slug ?? '#') }}" class="premium-link">Explore <i
+                                    class="fa fa-arrow-right"></i></a> --}}
                         </div>
                     </div>
                 @empty
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 px-4">
                     <div class="about-cont-2 pl-40">
                         <div class="section-title">
                             <h5>{{ $settings->about_subtitle ?? 'Always here for you' }}</h5>
