@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use App\Models\CoreValue;
-use App\Models\Service;
+use App\Models\ValuedService;
 use App\Models\HomeServiceItem;
 use App\Models\CompanySetting;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $sliders = Slider::where('is_active', true)->orderBy('order')->get();
         $coreValues = CoreValue::where('is_active', true)->orderBy('order')->get();
-        $services = Service::where('status', true)->take(4)->get();
+        $services = ValuedService::where('is_active', true)->take(4)->get();
 
 
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Panel') — {{ $company_setting->company_name ?? 'SkyLink Solutions' }}</title>
-    @if($company_setting->favicon)
+    @if ($company_setting->favicon)
         <link rel="shortcut icon" href="{{ asset('storage/' . $company_setting->favicon) }}" type="image/x-icon">
     @endif
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -356,6 +356,7 @@
             .sidebar-close {
                 display: block;
             }
+
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s;
@@ -380,17 +381,74 @@
     </style>
     <style>
         /* DataTables Custom Styling for Dark Theme */
-        .dataTables_wrapper { padding: 20px 0; }
-        .dataTables_length, .dataTables_filter { margin-bottom: 20px; padding: 0 20px; color: var(--text-muted); font-size: 13px; }
-        .dataTables_length select, .dataTables_filter input { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff; padding: 6px 12px; margin: 0 8px; outline: none; }
-        .dataTables_info { padding: 20px; color: var(--text-muted); font-size: 13px; }
-        .dataTables_paginate { padding: 20px; }
-        .paginate_button { padding: 6px 12px !important; margin: 0 4px !important; border-radius: 8px !important; border: 1px solid var(--border) !important; background: rgba(255,255,255,0.05) !important; color: var(--text-muted) !important; cursor: pointer; transition: all 0.2s; }
-        .paginate_button.current { background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; }
-        .paginate_button:hover:not(.current) { background: rgba(255,255,255,0.1) !important; color: #fff !important; }
-        .dataTables_empty { padding: 40px !important; text-align: center; color: var(--text-muted); }
-        table.dataTable thead th { border-bottom: 1px solid var(--border) !important; }
-        table.dataTable.no-footer { border-bottom: none !important; }
+        .dataTables_wrapper {
+            padding: 20px 0;
+        }
+
+        .dataTables_length,
+        .dataTables_filter {
+            margin-bottom: 20px;
+            padding: 0 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .dataTables_length select,
+        .dataTables_filter input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #fff;
+            padding: 6px 12px;
+            margin: 0 8px;
+            outline: none;
+        }
+
+        .dataTables_info {
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .dataTables_paginate {
+            padding: 20px;
+        }
+
+        .paginate_button {
+            padding: 6px 12px !important;
+            margin: 0 4px !important;
+            border-radius: 8px !important;
+            border: 1px solid var(--border) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: var(--text-muted) !important;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .paginate_button.current {
+            background: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
+        }
+
+        .paginate_button:hover:not(.current) {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+
+        .dataTables_empty {
+            padding: 40px !important;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        table.dataTable thead th {
+            border-bottom: 1px solid var(--border) !important;
+        }
+
+        table.dataTable.no-footer {
+            border-bottom: none !important;
+        }
     </style>
     @stack('styles')
 </head>
@@ -402,8 +460,9 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            @if($company_setting->logo)
-                <img src="{{ asset('storage/' . $company_setting->logo) }}" alt="Logo" style="height: 40px; width: auto; border-radius: 8px;">
+            @if ($company_setting->logo)
+                <img src="{{ asset('storage/' . $company_setting->logo) }}" alt="Logo"
+                    style="height: 40px; width: auto; border-radius: 8px;">
             @else
                 <div class="brand-icon">SL</div>
             @endif
@@ -464,6 +523,11 @@
                     <span class="nav-icon"><i class="fas fa-gem"></i></span> Core Values
                 </a>
 
+                <a href="{{ route('admin.valued_services.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.valued_services*') ? 'active' : '' }}">
+                    <span class="nav-icon"><i class="fas fa-gem"></i></span> Valued Services
+                </a>
+
                 <a href="{{ route('admin.home_service_items.index') }}"
                     class="nav-item {{ request()->routeIs('admin.home_service_items*') ? 'active' : '' }}">
                     <span class="nav-icon"><i class="fas fa-th-list"></i></span> Service Sectors
@@ -471,6 +535,10 @@
                 <a href="{{ route('admin.settings.index', ['tab' => 'home']) }}"
                     class="nav-item {{ (request()->routeIs('admin.settings*') && request('tab') == 'home') || (request()->routeIs('admin.settings*') && !request()->has('tab')) ? 'active' : '' }}">
                     <span class="nav-icon"><i class="fas fa-edit"></i></span> Page Content
+                </a>
+                <a href="{{ route('admin.services.index') }}"
+                    class="nav-item {{ request()->routeIs('admin.services*') ? 'active' : '' }}">
+                    <span class="nav-icon"><i class="fas fa-cogs"></i></span> Our Services
                 </a>
 
                 <div class="nav-label" style="margin-top:12px;">About Us Page</div>
@@ -483,11 +551,6 @@
                     <span class="nav-icon"><i class="fas fa-edit"></i></span> About Page Content
                 </a>
 
-                <div class="nav-label" style="margin-top:12px;">Dynamic Services</div>
-                <a href="{{ route('admin.services.index') }}"
-                    class="nav-item {{ request()->routeIs('admin.services*') ? 'active' : '' }}">
-                    <span class="nav-icon"><i class="fas fa-project-diagram"></i></span> Manage Services
-                </a>
 
                 <div class="nav-label" style="margin-top:12px;">Content</div>
                 <a href="{{ route('admin.announcements.index') }}"
@@ -579,7 +642,10 @@
             if ($('.datatable').length > 0) {
                 $('.datatable').DataTable({
                     pageLength: 10,
-                    lengthMenu: [[5, 10, 50, 100, -1], [5, 10, 50, 100, "All"]],
+                    lengthMenu: [
+                        [5, 10, 50, 100, -1],
+                        [5, 10, 50, 100, "All"]
+                    ],
                     language: {
                         search: "_INPUT_",
                         searchPlaceholder: "Search records...",

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\VolunteerController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ValuedServiceController;
 use App\Http\Controllers\Admin\CompanySettingController;
 use App\Http\Controllers\NewsController;
 
@@ -102,6 +103,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('/announcements/{announcement}',         [AnnouncementController::class, 'update'])->name('announcements.update');
             Route::delete('/announcements/{announcement}',      [AnnouncementController::class, 'destroy'])->name('announcements.destroy');
             Route::post('/announcements/{announcement}/toggle', [AnnouncementController::class, 'togglePublish'])->name('announcements.toggle');
+
+            // Valued Services (Homepage Featured)
+            Route::get('/valued-services',                     [ValuedServiceController::class, 'index'])->name('valued_services.index');
+            Route::get('/valued-services/create',              [ValuedServiceController::class, 'create'])->name('valued_services.create');
+            Route::post('/valued-services',                    [ValuedServiceController::class, 'store'])->name('valued_services.store');
+            Route::get('/valued-services/{valued_service}/edit', [ValuedServiceController::class, 'edit'])->name('valued_services.edit');
+            Route::put('/valued-services/{valued_service}',    [ValuedServiceController::class, 'update'])->name('valued_services.update');
+            Route::delete('/valued-services/{valued_service}', [ValuedServiceController::class, 'destroy'])->name('valued_services.destroy');
+            Route::post('/valued-services/{valued_service}/toggle', [ValuedServiceController::class, 'toggleActive'])->name('valued_services.toggle');
 
             // Services
             Route::get('/services',                     [AdminServiceController::class, 'index'])->name('services.index');

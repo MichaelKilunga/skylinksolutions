@@ -17,32 +17,34 @@
                                     @if ($slider->btn1_text && $slider->btn1_url)
                                         @php
                                             $btn1Url = trim($slider->btn1_url);
-                                            $btn1IsExternal = !str_starts_with($btn1Url, '/') && (
-                                                preg_match('/^https?:\/\//i', $btn1Url) ||
-                                                preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn1Url)
-                                            );
+                                            $btn1IsExternal =
+                                                !str_starts_with($btn1Url, '/') &&
+                                                (preg_match('/^https?:\/\//i', $btn1Url) ||
+                                                    preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn1Url));
                                             $btn1Href = $btn1IsExternal
-                                                ? (preg_match('/^https?:\/\//i', $btn1Url) ? $btn1Url : 'https://' . $btn1Url)
+                                                ? (preg_match('/^https?:\/\//i', $btn1Url)
+                                                    ? $btn1Url
+                                                    : 'https://' . $btn1Url)
                                                 : url($btn1Url);
                                         @endphp
                                         <a href="{{ $btn1Href }}" class="main-btn"
-                                            @if($btn1IsExternal) target="_blank" rel="noopener noreferrer" @endif
-                                        >{{ $slider->btn1_text }}</a>
+                                            @if ($btn1IsExternal) target="_blank" rel="noopener noreferrer" @endif>{{ $slider->btn1_text }}</a>
                                     @endif
                                     @if ($slider->btn2_text && $slider->btn2_url)
                                         @php
                                             $btn2Url = trim($slider->btn2_url);
-                                            $btn2IsExternal = !str_starts_with($btn2Url, '/') && (
-                                                preg_match('/^https?:\/\//i', $btn2Url) ||
-                                                preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn2Url)
-                                            );
+                                            $btn2IsExternal =
+                                                !str_starts_with($btn2Url, '/') &&
+                                                (preg_match('/^https?:\/\//i', $btn2Url) ||
+                                                    preg_match('/^[a-z0-9\-]+\.[a-z]{2,}/i', $btn2Url));
                                             $btn2Href = $btn2IsExternal
-                                                ? (preg_match('/^https?:\/\//i', $btn2Url) ? $btn2Url : 'https://' . $btn2Url)
+                                                ? (preg_match('/^https?:\/\//i', $btn2Url)
+                                                    ? $btn2Url
+                                                    : 'https://' . $btn2Url)
                                                 : url($btn2Url);
                                         @endphp
                                         <a href="{{ $btn2Href }}" class="main-btn main-btn-2 ml-15"
-                                            @if($btn2IsExternal) target="_blank" rel="noopener noreferrer" @endif
-                                        >{{ $slider->btn2_text }}</a>
+                                            @if ($btn2IsExternal) target="_blank" rel="noopener noreferrer" @endif>{{ $slider->btn2_text }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -103,7 +105,7 @@
                                 <i class="fa {{ $service->icon ?? 'fa-cogs' }}"></i>
                             </div>
                             <h3>{{ $service->title }}</h3>
-                            <p>{{ Str::limit($service->short_description ?? $service->description, 100) }}</p>
+                            <p>{{ Str::limit($service->description, 100) }}</p>
                             <a href="{{ url($service->slug ?? '#') }}" class="premium-link">Explore <i
                                     class="fa fa-arrow-right"></i></a>
                         </div>
@@ -123,8 +125,8 @@
             <div class="row align-items-center mt-4">
                 <div class="col-lg-6">
                     <div class="about-image-wrapper">
-                        <img src="{{ asset($settings->about_image ?? 'images/slider/new/about.jpg') }}" alt="About SkyLink"
-                            class="img-fluid rounded shadow-lg">
+                        <img src="{{ $settings->about_image ? asset('storage/' . $settings->about_image) : asset('images/slider/new/about.jpg') }}"
+                            alt="About SkyLink" class="img-fluid rounded shadow-lg">
                         <div class="experience-badge">
                             <span>{{ $settings->experience_years ?? '5+' }}</span>
                             <p>{{ $settings->experience_text ?? 'Years of Excellence' }}</p>
@@ -177,8 +179,8 @@
                 <div class="col-lg-6">
                     <div class="serve-main-card mt-30">
                         <div class="serve-img">
-                            <img src="{{ asset($settings->nationwide_image ?? 'images/all-icon/w.jpg') }}" alt="Wide Coverage"
-                                class="img-fluid rounded shadow">
+                            <img src="{{ asset($settings->nationwide_image ?? 'images/all-icon/w.jpg') }}"
+                                alt="Wide Coverage" class="img-fluid rounded shadow">
                         </div>
                         <div class="serve-content mt-30">
                             <h3>{{ $settings->nationwide_title ?? 'Nationwide Digital Connectivity' }}</h3>

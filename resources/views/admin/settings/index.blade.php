@@ -287,13 +287,9 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">About Page Side Image</label>
-                                @if($setting->about_image)
-                                    <img src="{{ asset('storage/' . $setting->about_image) }}" alt="About" style="width:100px;margin-bottom:10px;border-radius:8px;display:block;">
-                                @endif
-                                <input type="file" name="about_image" class="form-control">
-                                <small class="text-muted">This image appears next to the About description on both the Home and About pages.</small>
+                            <div class="alert alert-info" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd;padding:14px;border-radius:10px;font-size:13px;">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                The <strong>About Section Image</strong> (the photo shown on the Home page) is managed under the <a href="{{ route('admin.settings.index', ['tab' => 'home']) }}" style="color:#60a5fa;font-weight:700;">Home Page Content → About Section</a> tab.
                             </div>
                         </div>
                     </div>
@@ -352,6 +348,19 @@
                             <div class="form-group">
                                 <label class="form-label">Description 2</label>
                                 <textarea name="about_description_2" class="form-control" rows="3">{{ $setting->about_description_2 }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-image" style="color:#60a5fa;margin-right:6px;"></i>About Section Image</label>
+                                @if($setting->about_image)
+                                    <div class="mb-3" style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;display:inline-block;">
+                                        <img src="{{ asset('storage/' . $setting->about_image) }}" alt="About Image" style="max-height:120px;border-radius:8px;display:block;">
+                                        <small class="text-muted d-block mt-2">Current image — upload a new one below to replace it.</small>
+                                    </div>
+                                @endif
+                                <input type="file" name="about_image" class="form-control" accept="image/*">
+                                <small class="text-muted">This is the photo shown on the left side of the Home page About section. Recommended: landscape, min 800×600px.</small>
                             </div>
                         </div>
                     </div>
