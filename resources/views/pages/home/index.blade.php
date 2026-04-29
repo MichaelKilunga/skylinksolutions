@@ -4,7 +4,7 @@
     <section id="slider-part" class="slider-active">
         @foreach ($sliders as $slider)
             <div class="single-slider bg_cover d-flex align-items-center"
-                style="background-image: url({{ asset($slider->image) }})" data-overlay="7">
+                style="background-image: url({{ asset('storage/' . $slider->image) }})" data-overlay="7">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-11">
@@ -179,7 +179,7 @@
                 <div class="col-lg-6">
                     <div class="serve-main-card mt-30">
                         <div class="serve-img">
-                            <img src="{{ asset($settings->nationwide_image) }}" alt="Wide Coverage" class="img-fluid rounded shadow">
+                            <img src="{{ asset('storage/' . $settings->nationwide_image) }}" alt="Wide Coverage" class="img-fluid rounded shadow">
                         </div>
                         <div class="serve-content mt-30">
                             <h3>{{ $settings->nationwide_title ?? 'Nationwide Digital Connectivity' }}</h3>
@@ -194,7 +194,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-sm-4">
                                         <div class="serve-thumb">
-                                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
                                                 class="img-fluid rounded">
                                         </div>
                                     </div>

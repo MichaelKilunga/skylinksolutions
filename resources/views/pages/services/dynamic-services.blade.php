@@ -49,7 +49,7 @@
                             @foreach ($service->images as $key => $image)
                                 <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
                                     id="image-{{ $image->id }}">
-                                    <img src="{{ asset($image->image) }}" class="img-fluid rounded">
+                                    <img src="{{ asset('storage/' . $image->image) }}" class="img-fluid rounded">
                                 </div>
                             @endforeach
                         </div>
@@ -86,7 +86,7 @@
                                     <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="pill"
                                         href="#image-{{ $image->id }}">
 
-                                        <img src="{{ asset($image->image) }}" width="80"
+                                        <img src="{{ asset('storage/' . $image->image) }}" width="80"
                                             class="rounded shadow-sm border">
                                     </a>
                                 </li>
@@ -284,7 +284,7 @@
                         <div class="portfolio-card bg-white rounded shadow-sm h-100">
 
                             <div class="portfolio-img position-relative">
-                                <img src="{{ asset($project->image) }}" class="img-fluid">
+                                <img src="{{ asset('storage/' . $project->image) }}" class="img-fluid">
 
                                 <div class="portfolio-overlay d-flex align-items-center justify-content-center">
 

@@ -29,7 +29,7 @@
                     @forelse($items as $item)
                         <tr style="border-bottom: 1px solid var(--border);">
                             <td style="padding: 15px 22px;">
-                                <img src="{{ asset($item->image) }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
+                                <img src="{{ asset('storage/' . $item->image) }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
                             </td>
                             <td style="padding: 15px 22px;">
                                 <div style="font-weight: 600; color: #fff;">{{ $item->title }}</div>

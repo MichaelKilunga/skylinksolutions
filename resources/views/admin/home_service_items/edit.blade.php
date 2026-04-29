@@ -27,7 +27,7 @@
                     <div class="form-group" style="margin-bottom: 20px;">
                         <label style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Sector Image</label>
                         <div style="margin-bottom: 10px;">
-                            <img src="{{ asset($homeServiceItem->image) }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
+                            <img src="{{ asset('storage/' . $homeServiceItem->image) }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
                         </div>
                         <input type="file" name="image" class="form-control" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;">
                         <small style="color: var(--text-muted);">Leave empty to keep current image.</small>

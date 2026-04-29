@@ -59,7 +59,7 @@
         <tbody>
             @foreach($partners as $ptr)
             <tr class="{{ !$ptr->is_active ? 'inactive' : '' }}">
-                <td><img src="{{ asset($ptr->logo_path ?? 'images/placeholder.jpg') }}" alt="{{ $ptr->name }}" style="width: 60px; height: 36px; object-fit: contain; background: #fff; border-radius: 4px; padding: 2px;"></td>
+                <td><img src="{{ $ptr->logo_path ? asset('storage/' . $ptr->logo_path) : asset('images/placeholder.jpg') }}" alt="{{ $ptr->name }}" style="width: 60px; height: 36px; object-fit: contain; background: #fff; border-radius: 4px; padding: 2px;"></td>
                 <td><div style="font-weight:700; color:#e2e8f0;">{{ $ptr->name }}</div></td>
                 <td><div style="font-size:12px; font-weight:600; color:#3b82f6;">{{ $ptr->activity }}</div></td>
                 <td>

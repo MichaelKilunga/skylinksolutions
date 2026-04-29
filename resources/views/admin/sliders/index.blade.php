@@ -29,7 +29,7 @@
                     @forelse($sliders as $slider)
                         <tr style="border-bottom: 1px solid var(--border);">
                             <td style="padding: 15px 22px;">
-                                <img src="{{ asset($slider->image) }}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
+                                <img src="{{ asset('storage/' . $slider->image) }}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);">
                             </td>
                             <td style="padding: 15px 22px;">
                                 <div style="font-weight: 600; color: #fff;">{{ $slider->title }}</div>

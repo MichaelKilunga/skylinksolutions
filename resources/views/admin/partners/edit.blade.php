@@ -59,7 +59,7 @@
             <div class="form-hint">Leave blank to keep current logo. Max 2MB.</div>
             @error('logo')<div class="form-error">{{ $message }}</div>@enderror
             <div class="logo-preview" id="previewContainer">
-                <img id="logoPreview" src="{{ asset($partner->logo_path ?? 'images/placeholder.jpg') }}" alt="Logo Preview">
+                <img id="logoPreview" src="{{ $partner->logo_path ? asset('storage/' . $partner->logo_path) : asset('images/placeholder.jpg') }}" alt="Logo Preview">
                 <span style="font-size:12px;color:#64748b;">{{ $partner->logo_path ? 'Current Logo' : 'Preview' }}</span>
             </div>
         </div>
