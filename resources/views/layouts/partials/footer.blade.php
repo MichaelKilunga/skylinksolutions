@@ -227,7 +227,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mb-lg-0">
                     <div class="footer-about">
                         <a href="{{ url('/') }}">
-                            <img src="{{ $company_setting->logo ? asset('storage/' . $company_setting->logo) : asset('images/assets/logo/logo-01.png') }}" alt="{{ $company_setting->company_name ?? 'SkyLink Solutions' }}"
+                            <img src="{{ $company_setting->logo ? asset('storage/' . $company_setting->logo) : asset('images/assets/logo/logo-01.png') }}"
+                                alt="{{ $company_setting->company_name ?? 'SkyLink Solutions' }}"
                                 style="height: 40px; {{ $company_setting->logo ? '' : 'filter: brightness(10);' }}">
                         </a>
                         <p>We're an adroit digital technology company
@@ -305,6 +306,17 @@
                                 <div class="icon"><i class="fa fa-envelope-o"></i></div>
                                 <div class="cont">
                                     <p>{{ $company_setting->email ?? 'info@skylinksolutions.co.tz' }}</p>
+                                </div>
+                            </li>
+                            {{-- <hr class="border-danger"> --}}
+                            <li>
+                                {{-- <div class="icon"><a href="{{ 'admin/login' }}" target="_blank"><i
+                                            class="fa fa-lock"></i></a></div> --}}
+                                <div class="cont text-center">
+                                    <a class="btn btn-outline-danger btn-sm" href="{{ 'admin/login' }}"
+                                        target="_blank">
+                                        <i class="fa fa-lock px-2"></i> Admin Login
+                                    </a>
                                 </div>
                             </li>
                         </ul>
