@@ -179,8 +179,7 @@
                 <div class="col-lg-6">
                     <div class="serve-main-card mt-30">
                         <div class="serve-img">
-                            <img src="{{ asset($settings->nationwide_image ?? 'images/all-icon/w.jpg') }}"
-                                alt="Wide Coverage" class="img-fluid rounded shadow">
+                            <img src="{{ asset($settings->nationwide_image) }}" alt="Wide Coverage" class="img-fluid rounded shadow">
                         </div>
                         <div class="serve-content mt-30">
                             <h3>{{ $settings->nationwide_title ?? 'Nationwide Digital Connectivity' }}</h3>
