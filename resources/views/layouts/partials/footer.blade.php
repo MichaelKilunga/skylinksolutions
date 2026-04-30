@@ -308,17 +308,6 @@
                                     <p>{{ $company_setting->email ?? 'info@skylinksolutions.co.tz' }}</p>
                                 </div>
                             </li>
-                            {{-- <hr class="border-danger"> --}}
-                            <li>
-                                {{-- <div class="icon"><a href="{{ 'admin/login' }}" target="_blank"><i
-                                            class="fa fa-lock"></i></a></div> --}}
-                                <div class="cont text-center">
-                                    <a class="btn btn-outline-danger btn-sm" href="{{ 'admin/login' }}"
-                                        target="_blank">
-                                        <i class="fa fa-lock px-2"></i> Admin Login
-                                    </a>
-                                </div>
-                            </li>
                         </ul>
                     </div> <!-- footer contact -->
                 </div>
@@ -337,7 +326,8 @@
                             <p>&copy; {{ date('Y') }} SkyLink Solutions. All rights reserved.</p>
                         </div> <!-- copyright content -->
                         <div class="copyright-content">
-                            <p>Designed by <a href="#">SkyLink Solutions</a></p>
+                            <p>Designed by <a href="{{ 'admin/login' }}" target="_blank">SkyLink
+                                    Solutions</a></p>
                         </div>
                     </div> <!-- copyright -->
                 </div>
