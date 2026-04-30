@@ -28,9 +28,10 @@ class PartnerController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('partners', 'public');
-            $validated['logo_path'] = 'storage/' . $path;
+            $validated['logo_path'] = $request->file('logo')->store('partners', 'public');
         }
+
+        unset($validated['logo']);
 
         $validated['is_active'] = $request->has('is_active');
 
@@ -54,9 +55,10 @@ class PartnerController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('partners', 'public');
-            $validated['logo_path'] = 'storage/' . $path;
+            $validated['logo_path'] = $request->file('logo')->store('partners', 'public');
         }
+
+        unset($validated['logo']);
 
         $validated['is_active'] = $request->has('is_active');
 

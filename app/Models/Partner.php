@@ -13,4 +13,17 @@ class Partner extends Model
         'logo_path',
         'is_active',
     ];
+
+    public function getLogoUrlAttribute()
+    {
+        if (!$this->logo_path) {
+            return asset('images/placeholder.jpg');
+        }
+
+        if (str_starts_with($this->logo_path, 'images/')) {
+            return asset($this->logo_path);
+        }
+
+        return asset('storage/' . $this->logo_path);
+    }
 }

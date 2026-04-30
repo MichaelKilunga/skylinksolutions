@@ -55,7 +55,7 @@
                                         @foreach($chunk as $partner)
                                             <div class="col-md-4">
                                                 <div class="partner-card bg-white p-4 rounded shadow-sm border text-center h-100">
-                                                    <img src="{{ $partner->logo_path ? asset('storage/' . $partner->logo_path) : asset('images/placeholder.jpg') }}" alt="{{ $partner->name }}"
+                                                    <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}"
                                                         class="img-fluid mb-3" style="max-height: 60px;">
                                                     <h5 class="font-weight-bold">{{ $partner->name }}</h5>
                                                     <p class="text-muted small">{{ $partner->description }}</p>
