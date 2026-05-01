@@ -5,27 +5,33 @@
 @push('styles')
 <style>
     .back-link { display: inline-flex; align-items: center; gap: 8px; color: #64748b; font-size: 13px; text-decoration: none; margin-bottom: 20px; transition: color 0.2s; }
-    .back-link:hover { color: #60a5fa; }
-    .msg-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; max-width: 780px; }
-    .msg-header { padding: 28px 32px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(59,130,246,0.05); }
-    .msg-subject { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .back-link:hover { color: #3b82f6; }
+    .msg-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; max-width: 780px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+    .msg-header { padding: 28px 32px; border-bottom: 1px solid var(--border); background: #f8fafc; }
+    .msg-subject { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
     .msg-meta { display: flex; flex-wrap: wrap; gap: 20px; }
-    .meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94a3b8; }
-    .meta-item i { color: #60a5fa; width: 16px; text-align: center; }
-    .meta-item strong { color: #e2e8f0; }
-    .msg-body { padding: 32px; }
-    .msg-body p { font-size: 15px; color: #cbd5e1; line-height: 1.8; white-space: pre-wrap; }
-    .msg-footer { padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 12px; }
+    .meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748b; }
+    .meta-item i { color: #3b82f6; width: 16px; text-align: center; }
+    .meta-item strong { color: var(--text); }
+    .msg-body { padding: 32px; background: #fff; }
+    .msg-body p { font-size: 15px; color: var(--text); line-height: 1.8; white-space: pre-wrap; margin: 0; }
+    .msg-footer { padding: 20px 32px; border-top: 1px solid var(--border); display: flex; gap: 12px; background: #f8fafc; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; font-family: 'Inter', sans-serif; }
-    .btn-back { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
-    .btn-back:hover { background: rgba(255,255,255,0.1); color: #fff; }
-    .btn-delete { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #f87171; }
+    .btn-back { background: #fff; border: 1px solid var(--border); color: #64748b; }
+    .btn-back:hover { background: #f1f5f9; color: var(--text); }
+    .btn-delete { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #ef4444; }
     .btn-delete:hover { background: rgba(239,68,68,0.25); }
-    .status-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: rgba(16,185,129,0.15); color: #34d399; margin-left: 12px; vertical-align: middle; }
+    .status-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: rgba(16,185,129,0.15); color: #10b981; vertical-align: middle; }
 </style>
 @endpush
 
 @section('content')
+<div class="page-header" style="margin-bottom: 24px;">
+    <h2 style="font-size:20px;font-weight:700;color:var(--text); margin: 0;">
+        <i class="fas fa-envelope-open-text" style="color:#60a5fa;margin-right:10px;"></i>Message Detail
+    </h2>
+</div>
+
 <a href="{{ route('admin.messages.index') }}" class="back-link">
     <i class="fas fa-arrow-left"></i> Back to Messages
 </a>
@@ -75,3 +81,4 @@
     </div>
 </div>
 @endsection
+

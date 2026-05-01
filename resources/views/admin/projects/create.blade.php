@@ -4,16 +4,16 @@
 
 @push('styles')
 <style>
-    .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px; max-width: 800px; }
+    .form-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; }
     .form-group { margin-bottom: 20px; }
-    label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 8px; }
-    .form-control { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 14px; color: #fff; font-size: 14px; transition: all 0.2s; }
+    label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+    .form-control { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; transition: all 0.2s; }
     .form-control:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
     .error-msg { color: #f87171; font-size: 12px; margin-top: 4px; display: block; }
     
     .btn-save { padding: 10px 24px; background: linear-gradient(135deg,#3b82f6,#2563eb); border: none; border-radius: 8px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
     .btn-save:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
-    .btn-cancel { padding: 10px 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #94a3b8; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-cancel { padding: 10px 24px; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
     .btn-cancel:hover { background: rgba(255,255,255,0.08); color: #fff; }
 
     .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
@@ -55,7 +55,7 @@
                         <input type="checkbox" name="is_active" checked value="1">
                         <span class="slider"></span>
                     </label>
-                    <span style="font-size:13px; color:#e2e8f0;">Visible in header</span>
+                    <span style="font-size:13px; color: var(--text);">Visible in header</span>
                 </div>
             </div>
         </div>
@@ -67,3 +67,4 @@
     </form>
 </div>
 @endsection
+

@@ -13,7 +13,8 @@ class Service extends Model
         'banner_image',
         'short_description',
         'description',
-        'status'
+        'status',
+        'order'
     ];
 
     public function images()

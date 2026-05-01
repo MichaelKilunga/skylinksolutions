@@ -29,7 +29,7 @@ class NewsController extends Controller
             'content'      => ['required', 'string'],
             'excerpt'      => ['nullable', 'string', 'max:500'],
             'author_name'  => ['nullable', 'string', 'max:100'],
-            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'author_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
         ]);
 
@@ -67,7 +67,7 @@ class NewsController extends Controller
             'content'      => ['required', 'string'],
             'excerpt'      => ['nullable', 'string', 'max:500'],
             'author_name'  => ['nullable', 'string', 'max:100'],
-            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'author_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
         ]);
 

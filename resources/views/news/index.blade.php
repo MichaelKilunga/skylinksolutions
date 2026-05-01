@@ -153,15 +153,6 @@
                             <h5 class="font-weight-bold text-white mb-2">Subscribe</h5>
                             <p class="small text-white-50 mb-3">Get the latest updates directly.</p>
 
-                            @if (session('success'))
-                                <div class="newsletter-alert success animated fadeInDown">
-                                    <i class="fa fa-check-circle"></i>
-                                    <div>
-                                        <strong>Success!</strong>
-                                        <p class="mb-0 small">{{ session('success') }}</p>
-                                    </div>
-                                </div>
-                            @endif
 
                             @if ($errors->any())
                                 <div class="newsletter-alert error animated fadeInDown">

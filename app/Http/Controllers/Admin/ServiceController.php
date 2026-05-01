@@ -31,12 +31,14 @@ class ServiceController extends Controller
             'icon'              => ['nullable', 'string', 'max:100'],
             'short_description' => ['nullable', 'string', 'max:500'],
             'description'       => ['nullable', 'string'],
-            'banner_image'      => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'banner_image'      => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'status'            => ['boolean'],
+            'order'             => ['nullable', 'integer'],
         ]);
 
         $data['slug'] = Str::slug($data['title']);
         $data['icon'] = $data['icon'] ?? 'fa-cogs';
+        $data['order'] = $data['order'] ?? 0;
 
         if ($request->hasFile('banner_image')) {
             $data['banner_image'] = $request->file('banner_image')->store('services/banners', 'public');
@@ -60,12 +62,14 @@ class ServiceController extends Controller
             'icon'              => ['nullable', 'string', 'max:100'],
             'short_description' => ['nullable', 'string', 'max:500'],
             'description'       => ['nullable', 'string'],
-            'banner_image'      => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'banner_image'      => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'status'            => ['boolean'],
+            'order'             => ['nullable', 'integer'],
         ]);
 
         $data['slug'] = Str::slug($data['title']);
         $data['icon'] = $data['icon'] ?? 'fa-cogs';
+        $data['order'] = $data['order'] ?? 0;
 
         if ($request->hasFile('banner_image')) {
             // Delete old banner
@@ -110,7 +114,7 @@ class ServiceController extends Controller
     public function addImage(Request $request, Service $service)
     {
         $request->validate([
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'title' => ['nullable', 'string', 'max:255'],
         ]);
 
@@ -124,9 +128,31 @@ class ServiceController extends Controller
         return back()->with('success', 'Image added successfully.');
     }
 
+    public function updateImage(Request $request, ServiceImage $image)
+    {
+        $request->validate([
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
+            'title' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $data = $request->only('title');
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            Storage::disk('public')->delete($image->image);
+            $data['image'] = $request->file('image')->store('services/images', 'public');
+        }
+
+        $image->update($data);
+
+        return back()->with('success', 'Image updated successfully.');
+    }
+
     public function deleteImage(ServiceImage $image)
     {
-        Storage::disk('public')->delete($image->image);
+        if ($image->image) {
+            Storage::disk('public')->delete($image->image);
+        }
         $image->delete();
         return back()->with('success', 'Image deleted successfully.');
     }
@@ -144,6 +170,19 @@ class ServiceController extends Controller
         return back()->with('success', 'Feature added successfully.');
     }
 
+    public function updateFeature(Request $request, ServiceFeature $feature)
+    {
+        $request->validate([
+            'title'       => ['required', 'string', 'max:255'],
+            'icon'        => ['nullable', 'string', 'max:100'],
+            'description' => ['nullable', 'string'],
+        ]);
+
+        $feature->update($request->all());
+
+        return back()->with('success', 'Feature updated successfully.');
+    }
+
     public function deleteFeature(ServiceFeature $feature)
     {
         $feature->delete();
@@ -155,7 +194,7 @@ class ServiceController extends Controller
         $request->validate([
             'title'    => ['required', 'string', 'max:255'],
             'category' => ['nullable', 'string', 'max:255'],
-            'image'    => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'    => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'link'     => ['nullable', 'url'],
         ]);
 
@@ -171,9 +210,33 @@ class ServiceController extends Controller
         return back()->with('success', 'Project added successfully.');
     }
 
+    public function updateProject(Request $request, ServiceProject $project)
+    {
+        $request->validate([
+            'title'    => ['required', 'string', 'max:255'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'image'    => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
+            'link'     => ['nullable', 'url'],
+        ]);
+
+        $data = $request->only(['title', 'category', 'link']);
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            Storage::disk('public')->delete($project->image);
+            $data['image'] = $request->file('image')->store('services/projects', 'public');
+        }
+
+        $project->update($data);
+
+        return back()->with('success', 'Project updated successfully.');
+    }
+
     public function deleteProject(ServiceProject $project)
     {
-        Storage::disk('public')->delete($project->image);
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
         $project->delete();
         return back()->with('success', 'Project deleted successfully.');
     }

@@ -52,14 +52,16 @@
                             @forelse($partners->chunk(3) as $chunk)
                                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                     <div class="row">
-                                        @foreach($chunk as $partner)
+                                        @foreach ($chunk as $partner)
                                             <div class="col-md-4">
-                                                <div class="partner-card bg-white p-4 rounded shadow-sm border text-center h-100">
+                                                <div
+                                                    class="partner-card bg-white p-4 rounded shadow-sm border text-center h-100">
                                                     <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}"
                                                         class="img-fluid mb-3" style="max-height: 60px;">
                                                     <h5 class="font-weight-bold">{{ $partner->name }}</h5>
                                                     <p class="text-muted small">{{ $partner->description }}</p>
-                                                    <div class="badge badge-primary-soft text-primary p-2">Activity: {{ $partner->activity }}</div>
+                                                    <div class="badge badge-primary-soft text-primary p-2">Activity:
+                                                        {{ $partner->activity }}</div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -143,13 +145,6 @@
                 <div class="col-lg-7">
                     <div
                         class="application-form-card bg-white p-5 rounded shadow-sm border-top border-primary border-3 h-100">
-                        @if (session('success'))
-                            <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
-                                <i class="fa fa-check-circle mr-2"></i>
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         @if ($errors->any())
                             <div class="alert alert-danger mb-4">
                                 <ul class="mb-0">
@@ -165,7 +160,7 @@
                                 <a class="nav-link active text-center font-weight-bold py-3" id="pills-volunteer-tab"
                                     data-toggle="pill" href="#pills-volunteer" role="tab"
                                     aria-controls="pills-volunteer" aria-selected="true">
-                                    <i class="fa fa-handshake-o mr-2"></i> Community
+                                    <i class="fa fa-handshake-o mr-2"></i> Internship Program
                                 </a>
                             </li>
                             <li class="nav-item flex-fill">
@@ -181,7 +176,7 @@
                             <!-- Volunteer Tab -->
                             <div class="tab-pane fade show active" id="pills-volunteer" role="tabpanel"
                                 aria-labelledby="pills-volunteer-tab">
-                                <h4 class="font-weight-bold mb-4">Community Application</h4>
+                                <h4 class="font-weight-bold mb-4">Internship Application</h4>
                                 <form action="{{ route('volunteer.apply') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -190,16 +185,16 @@
                                             <div class="form-group">
                                                 <label class="small font-weight-bold">Full Name</label>
                                                 <input type="text" name="name"
-                                                    class="form-control bg-light border-0" placeholder="John Doe"
-                                                    required>
+                                                    class="form-control bg-light border-0"
+                                                    placeholder="i.e Francis Daniel" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <div class="form-group">
                                                 <label class="small font-weight-bold">Email Address</label>
                                                 <input type="email" name="email"
-                                                    class="form-control bg-light border-0" placeholder="john@example.com"
-                                                    required>
+                                                    class="form-control bg-light border-0"
+                                                    placeholder="francisdaniel@example.com" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-3">
@@ -229,12 +224,12 @@
                                                 <label class="small font-weight-bold">Attachments (CV/Letter)</label>
                                                 <input type="file" name="attachment"
                                                     class="form-control bg-light border-0">
+                                                <small class="text-muted">Max size: 1MB (PDF, DOC, DOCX, JPG, PNG)</small>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <button type="submit"
-                                                class="btn btn-primary btn-lg px-5 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit
-                                                Community Application</button>
+                                                class="btn btn-primary btn-lg px-5 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -251,8 +246,8 @@
                                             <div class="form-group">
                                                 <label class="small font-weight-bold">Full Name</label>
                                                 <input type="text" name="full_name"
-                                                    class="form-control bg-light border-0" placeholder="John Doe"
-                                                    required>
+                                                    class="form-control bg-light border-0"
+                                                    placeholder="i.e Francis Daniel" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
@@ -305,6 +300,25 @@
                                                     class="form-control bg-light border-0" placeholder="0" readonly>
                                             </div>
                                         </div>
+                                        {{-- add email & phone number --}}
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="small font-weight-bold">Email</label>
+                                                <input type="email" name="email"
+                                                    class="form-control bg-light border-0"
+                                                    placeholder="i.e francisdaniel@example.com" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="small font-weight-bold">Phone Number</label>
+                                                <input type="text" name="phone_number"
+                                                    class="form-control bg-light border-0" placeholder="e.g. 0712345678"
+                                                    required>
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-md-12 mb-3">
                                             <div class="form-group">
                                                 <label class="small font-weight-bold">Experience/Competence on</label>
@@ -333,13 +347,12 @@
                                                 <label class="small font-weight-bold">Field Attachment Letter</label>
                                                 <input type="file" name="attachment"
                                                     class="form-control bg-light border-0" required>
-                                                <small class="text-muted">Max size: 5MB (PDF, DOC, DOCX, JPG, PNG)</small>
+                                                <small class="text-muted">Max size: 1MB (PDF, DOC, DOCX, JPG, PNG)</small>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <button type="submit"
-                                                class="btn btn-primary btn-lg px-5 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit
-                                                Field Application</button>
+                                                class="btn btn-primary btn-lg px-5 rounded shadow-sm font-weight-bold transition-transform hover-scale">Submit</button>
                                         </div>
                                     </div>
                                 </form>

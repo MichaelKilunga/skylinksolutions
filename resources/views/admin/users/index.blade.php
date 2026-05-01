@@ -8,17 +8,17 @@
     .btn-create { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: linear-gradient(135deg,#3b82f6,#2563eb); border: none; border-radius: 10px; color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59,130,246,0.35); }
     .btn-create:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(59,130,246,0.4); }
     
-    .data-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; }
+    .data-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
     .table-container { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 13px; }
-    th { text-align: left; padding: 16px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.06); font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
-    td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    table { width: 100%; border-collapse: collapse; color: var(--text); font-size: 13px; }
+    th { text-align: left; padding: 16px; background: var(--bg-dark); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(255,255,255,0.01); }
+    tr:hover td { background: var(--bg-dark); }
 
     .user-info { display: flex; align-items: center; gap: 12px; }
     .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(139,92,246,0.2); }
-    .user-name { font-weight: 700; color: #fff; display: block; }
+    .user-name { font-weight: 700; color: var(--text); display: block; }
     .user-email { font-size: 11px; color: #64748b; }
 
     .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; }
@@ -30,8 +30,8 @@
     .status-off { color: #ef4444; }
 
     .actions { display: flex; gap: 8px; }
-    .btn-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #94a3b8; transition: all 0.2s; cursor: pointer; }
-    .btn-icon:hover { background: rgba(255,255,255,0.08); color: #fff; transform: translateY(-1px); }
+    .btn-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-muted); transition: all 0.2s; cursor: pointer; }
+    .btn-icon:hover { background: var(--border); color: var(--text); transform: translateY(-1px); }
     .btn-icon.edit:hover { color: #fbbf24; border-color: rgba(245,158,11,0.3); }
     .btn-icon.delete:hover { color: #f87171; border-color: rgba(239,68,68,0.3); }
     .btn-icon.toggle:hover { color: #22d3ee; border-color: rgba(6,182,212,0.3); }
@@ -42,7 +42,7 @@
 
 @section('content')
 <div class="page-header">
-    <h2 style="font-size:20px;font-weight:700;color:#fff;">
+    <h2 style="font-size:20px;font-weight:700;color:var(--text);">
         <i class="fas fa-users" style="color:#a78bfa;margin-right:10px;"></i>Users
     </h2>
     <a href="{{ route('admin.users.create') }}" class="btn-create">
@@ -85,7 +85,7 @@
                             <span class="badge badge-user">User</span>
                         @endif
                     </td>
-                    <td><span style="color:#cbd5e1;">{{ $user->position ?? '—' }}</span></td>
+                    <td><span style="color: var(--text-muted);">{{ $user->position ?? '—' }}</span></td>
                     <td>
                         <form method="POST" action="{{ route('admin.users.toggle-visibility', $user) }}">
                             @csrf
@@ -136,3 +136,4 @@
 </div>
 
 @endsection
+

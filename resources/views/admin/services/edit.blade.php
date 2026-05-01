@@ -27,8 +27,8 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 24px;
@@ -37,7 +37,7 @@
         .card-title {
             font-size: 16px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -52,17 +52,17 @@
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: #cbd5e1;
+            color: var(--text-muted);
             margin-bottom: 8px;
         }
 
         .form-control {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            color: #e2e8f0;
+            color: var(--text);
             font-size: 14px;
             transition: all 0.2s;
             outline: none;
@@ -102,7 +102,7 @@
             padding: 12px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #fff;
         }
 
         .item-info {
@@ -193,6 +193,83 @@
             transform: translateX(20px);
             background: #10b981;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .btn-edit-small {
+            color: #60a5fa;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.6;
+            transition: 0.2s;
+            margin-right: 8px;
+        }
+
+        .btn-edit-small:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .actions-cell {
+            display: flex;
+            align-items: center;
+        }
     </style>
 @endpush
 
@@ -249,8 +326,18 @@
                                     {{ old('status', $service->status) ? 'checked' : '' }}>
                                 <span class="toggle-slider"></span>
                             </label>
-                            <span style="color:#94a3b8; font-size:14px;">Show this service on the website</span>
+                            <span style="color: var(--text-muted); font-size:14px;">Show this service on the website</span>
                         </div>
+                    </div>
+
+                    {{-- order --}}
+                    <div class="form-group">
+                        <label for="order">Order</label>
+                        <input type="number" id="order" name="order" class="form-control" placeholder="Order"
+                            value="{{ old('order', $service->order ?? 0) }}">
+                        @error('order')
+                            <div class="form-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Save Changes</button>
@@ -267,23 +354,29 @@
                             <div class="item-info">
                                 <i class="{{ $feature->icon ?? 'fas fa-check' }}"></i>
                                 <div>
-                                    <div style="font-weight:600; color:#fff;">{{ $feature->title }}</div>
-                                    <div style="font-size:12px; color:#64748b;">{{ Str::limit($feature->description, 50) }}
+                                    <div style="font-weight:600; color:var(--text);">{{ $feature->title }}</div>
+                                    <div style="font-size:12px; color:#64748b;">{{ Str::limit($feature->description, 500) }}
                                     </div>
                                 </div>
                             </div>
-                            <form method="POST" action="{{ route('admin.services.features.delete', $feature) }}">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn-del-small" onclick="return confirm('Delete feature?')"><i
-                                        class="fas fa-times"></i></button>
-                            </form>
+                            <div class="actions-cell">
+                                <button type="button" class="btn-edit-small" 
+                                    onclick="openEditFeatureModal({{ json_encode($feature) }})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <form method="POST" action="{{ route('admin.services.features.delete', $feature) }}">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn-del-small" onclick="return confirm('Delete feature?')"><i
+                                            class="fas fa-times"></i></button>
+                                </form>
+                            </div>
                         </div>
                     @empty
                         <p style="text-align:center; color:#475569; padding:20px;">No features added yet.</p>
                     @endforelse
                 </div>
 
-                <hr style="border-color:rgba(255,255,255,0.05); margin:24px 0;">
+                <hr style="border-color:var(--text); margin:24px 0;">
 
                 <form method="POST" action="{{ route('admin.services.features.add', $service) }}">
                     @csrf
@@ -318,12 +411,19 @@
                         <div class="item-card">
                             <div class="item-info">
                                 <img src="{{ asset('storage/' . $img->image) }}">
-                                <span style="font-size:13px; color:#fff;">{{ $img->title ?? 'Slide Image' }}</span>
+                                <span style="font-size:13px; color:var(--text);">{{ $img->title ?? 'Slide Image' }}</span>
                             </div>
-                            <form method="POST" action="{{ route('admin.services.images.delete', $img) }}">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn-del-small"><i class="fas fa-times"></i></button>
-                            </form>
+                            <div class="actions-cell">
+                                <button type="button" class="btn-edit-small" 
+                                    onclick="openEditImageModal({{ json_encode($img) }})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <form method="POST" action="{{ route('admin.services.images.delete', $img) }}">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn-del-small" onclick="return confirm('Delete image?')"><i
+                                            class="fas fa-times"></i></button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -354,14 +454,21 @@
                             <div class="item-info">
                                 <img src="{{ asset('storage/' . $proj->image) }}">
                                 <div>
-                                    <div style="font-size:13px; color:#fff;">{{ $proj->title }}</div>
+                                    <div style="font-size:13px; color:var(--text);">{{ $proj->title }}</div>
                                     <div style="font-size:11px; color:#64748b;">{{ $proj->category }}</div>
                                 </div>
                             </div>
-                            <form method="POST" action="{{ route('admin.services.projects.delete', $proj) }}">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn-del-small"><i class="fas fa-times"></i></button>
-                            </form>
+                            <div class="actions-cell">
+                                <button type="button" class="btn-edit-small" 
+                                    onclick="openEditProjectModal({{ json_encode($proj) }})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <form method="POST" action="{{ route('admin.services.projects.delete', $proj) }}">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn-del-small" onclick="return confirm('Delete project?')"><i
+                                            class="fas fa-times"></i></button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -391,4 +498,137 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- Edit Feature Modal -->
+    <div id="editFeatureModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Feature</h3>
+                <button type="button" class="modal-close" onclick="closeModal('editFeatureModal')">&times;</button>
+            </div>
+            <form id="editFeatureForm" method="POST" action="">
+                @csrf @method('PUT')
+                <div class="form-group">
+                    <label>Feature Title</label>
+                    <input type="text" name="title" id="edit_feature_title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Icon Class</label>
+                    <input type="text" name="icon" id="edit_feature_icon" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Feature Description</label>
+                    <textarea name="description" id="edit_feature_description" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" style="width:100%;">Update Feature</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Image Modal -->
+    <div id="editImageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Slider Image</h3>
+                <button type="button" class="modal-close" onclick="closeModal('editImageModal')">&times;</button>
+            </div>
+            <form id="editImageForm" method="POST" action="" enctype="multipart/form-data">
+                @csrf @method('PUT')
+                <div class="form-group">
+                    <label>Current Image</label>
+                    <img id="edit_image_preview" src="" style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
+                </div>
+                <div class="form-group">
+                    <label>Change Image (Optional)</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Caption</label>
+                    <input type="text" name="title" id="edit_image_title" class="form-control">
+                </div>
+                <button type="submit" class="btn-submit" style="width:100%;">Update Image</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Project Modal -->
+    <div id="editProjectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Project</h3>
+                <button type="button" class="modal-close" onclick="closeModal('editProjectModal')">&times;</button>
+            </div>
+            <form id="editProjectForm" method="POST" action="" enctype="multipart/form-data">
+                @csrf @method('PUT')
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" name="title" id="edit_project_title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" name="category" id="edit_project_category" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Current Thumbnail</label>
+                    <img id="edit_project_preview" src="" style="width:100%; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
+                </div>
+                <div class="form-group">
+                    <label>Change Thumbnail (Optional)</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Live Link</label>
+                    <input type="url" name="link" id="edit_project_link" class="form-control">
+                </div>
+                <button type="submit" class="btn-submit" style="width:100%;">Update Project</button>
+            </form>
+        </div>
+    </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function openEditFeatureModal(feature) {
+            const modal = document.getElementById('editFeatureModal');
+            const form = document.getElementById('editFeatureForm');
+            form.action = `/admin/service-features/${feature.id}`;
+            document.getElementById('edit_feature_title').value = feature.title;
+            document.getElementById('edit_feature_icon').value = feature.icon;
+            document.getElementById('edit_feature_description').value = feature.description;
+            modal.classList.add('active');
+        }
+
+        function openEditImageModal(img) {
+            const modal = document.getElementById('editImageModal');
+            const form = document.getElementById('editImageForm');
+            form.action = `/admin/service-images/${img.id}`;
+            document.getElementById('edit_image_preview').src = `/storage/${img.image}`;
+            document.getElementById('edit_image_title').value = img.title || '';
+            modal.classList.add('active');
+        }
+
+        function openEditProjectModal(project) {
+            const modal = document.getElementById('editProjectModal');
+            const form = document.getElementById('editProjectForm');
+            form.action = `/admin/service-projects/${project.id}`;
+            document.getElementById('edit_project_title').value = project.title;
+            document.getElementById('edit_project_category').value = project.category;
+            document.getElementById('edit_project_preview').src = `/storage/${project.image}`;
+            document.getElementById('edit_project_link').value = project.link || '';
+            modal.classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+@endpush
+

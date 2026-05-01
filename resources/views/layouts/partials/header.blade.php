@@ -65,7 +65,7 @@
                                     <a class="nav-link" href="{{ url('/about') }}">About</a>
                                 </li>
                                 @php
-                                    $services = \App\Models\Service::where('status', 1)->get();
+                                    $services = \App\Models\Service::where('status', 1)->orderBy('order')->get();
                                 @endphp
 
                                 <li class="nav-item dropdown {{ request()->is('services/*') ? 'active' : '' }}">

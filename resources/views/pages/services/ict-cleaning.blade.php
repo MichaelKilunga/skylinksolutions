@@ -156,11 +156,6 @@
                             <h4 class="font-weight-bold mb-2">Get a Free Quote</h4>
                             <p class="small text-muted mb-4">Request our specialized cleaning service today.</p>
 
-                            @if(session('success'))
-                                <div class="alert alert-success mb-4" role="alert">
-                                    <i class="fa fa-check-circle mr-2"></i> {{ session('success') }}
-                                </div>
-                            @endif
 
                             <form action="{{ route('quote.request') }}" method="POST">
                                 @csrf

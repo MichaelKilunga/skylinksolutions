@@ -84,7 +84,7 @@ class ContactController extends Controller
             'phone'      => ['required', 'string', 'max:30'],
             'skills'     => ['required', 'string'],
             'motivation' => ['required', 'string'],
-            'attachment' => ['nullable', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:5120'],
+            'attachment' => ['nullable', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:1024'],
         ]);
 
         if ($request->hasFile('attachment')) {
@@ -100,6 +100,8 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'full_name'      => ['required', 'string', 'max:255'],
+            'email'          => ['required', 'email', 'max:255'],
+            'phone_number'   => ['required', 'string', 'max:30'],
             'university'     => ['required', 'string', 'max:255'],
             'program'        => ['required', 'string', 'max:255'],
             'year_of_study'  => ['required', 'string', 'max:50'],
@@ -109,7 +111,7 @@ class ContactController extends Controller
             'experience'     => ['nullable', 'string'],
             'learning_goals' => ['nullable', 'string'],
             'source'         => ['nullable', 'string'],
-            'attachment'     => ['required', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:5120'],
+            'attachment'     => ['required', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:1024'],
         ]);
 
         if ($request->hasFile('attachment')) {

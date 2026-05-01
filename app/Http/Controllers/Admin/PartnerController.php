@@ -24,7 +24,7 @@ class PartnerController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'activity' => 'nullable|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -51,7 +51,7 @@ class PartnerController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'activity' => 'nullable|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
 
         if ($request->hasFile('logo')) {

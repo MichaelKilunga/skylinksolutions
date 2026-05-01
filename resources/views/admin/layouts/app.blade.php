@@ -13,18 +13,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
+        <style>
         :root {
             --sidebar-w: 260px;
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --accent: #06b6d4;
-            --bg-dark: #0b0f1a;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --bg-sidebar: rgba(15, 23, 42, 0.98);
-            --border: rgba(255, 255, 255, 0.08);
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --accent: #0dcaf0;
+            --bg-dark: #f0f4f8;
+            --bg-card: #ffffff;
+            --bg-sidebar: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            --border: #e2e8f0;
+            --border-light: rgba(255, 255, 255, 0.15);
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --sidebar-text: #ffffff;
+            --sidebar-text-muted: rgba(255, 255, 255, 0.7);
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -50,19 +53,19 @@
             width: var(--sidebar-w);
             height: 100vh;
             background: var(--bg-sidebar);
-            border-right: 1px solid var(--border);
+            border-right: none;
             display: flex;
             flex-direction: column;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100;
-            backdrop-filter: blur(20px);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.05);
         }
 
         .sidebar-brand {
             padding: 24px 20px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -71,7 +74,7 @@
         .sidebar-brand .brand-icon {
             width: 42px;
             height: 42px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -80,6 +83,7 @@
             color: #fff;
             font-weight: 800;
             flex-shrink: 0;
+            backdrop-filter: blur(10px);
         }
 
         .sidebar-brand .brand-text {
@@ -87,15 +91,15 @@
         }
 
         .sidebar-brand .brand-text strong {
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 800;
             color: #fff;
             display: block;
         }
 
         .sidebar-brand .brand-text span {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--sidebar-text-muted);
         }
 
         .sidebar-nav {
@@ -113,12 +117,12 @@
         }
 
         .sidebar-nav::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
 
         .sidebar-nav::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .nav-label {
@@ -126,7 +130,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: var(--text-muted);
+            color: var(--sidebar-text-muted);
             padding: 10px 10px 6px;
         }
 
@@ -136,7 +140,7 @@
             gap: 12px;
             padding: 10px 12px;
             border-radius: 10px;
-            color: var(--text-muted);
+            color: var(--sidebar-text-muted);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -146,14 +150,14 @@
         }
 
         .nav-item:hover {
-            background: rgba(59, 130, 246, 0.12);
-            color: var(--text);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         .nav-item.active {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(6, 182, 212, 0.15));
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-item .nav-icon {
@@ -174,7 +178,7 @@
 
         .sidebar-footer {
             padding: 16px 12px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border-light);
         }
 
         .sidebar-user {
@@ -183,13 +187,13 @@
             gap: 10px;
             padding: 10px 12px;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .sidebar-user .avatar {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -216,7 +220,7 @@
 
         .sidebar-user .user-role {
             font-size: 11px;
-            color: var(--accent);
+            color: var(--sidebar-text-muted);
         }
 
         /* Main */
@@ -231,8 +235,7 @@
         /* Top bar */
         .topbar {
             height: 64px;
-            background: rgba(11, 15, 26, 0.9);
-            backdrop-filter: blur(20px);
+            background: #ffffff;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -241,12 +244,13 @@
             position: sticky;
             top: 0;
             z-index: 50;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .topbar-title {
             font-size: 18px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text);
             flex: 1;
         }
 
@@ -257,7 +261,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.05);
+            background: #fff;
             color: var(--text-muted);
             font-size: 13px;
             font-weight: 500;
@@ -267,9 +271,9 @@
         }
 
         .topbar-btn:hover {
-            background: rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.4);
-            color: var(--danger);
+            background: #f8f9fa;
+            color: var(--primary);
+            border-color: #d1d5db;
         }
 
         .topbar-btn form {
@@ -295,15 +299,15 @@
         }
 
         .alert-success {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #6ee7b7;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #047857;
         }
 
         .alert-error {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
         }
 
         /* Mobile toggle */
@@ -322,7 +326,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: var(--sidebar-text-muted);
             font-size: 20px;
             cursor: pointer;
             margin-left: auto;
@@ -380,7 +384,7 @@
         }
     </style>
     <style>
-        /* DataTables Custom Styling for Dark Theme */
+        /* DataTables Custom Styling for Light Theme */
         .dataTables_wrapper {
             padding: 20px 0;
         }
@@ -395,13 +399,19 @@
 
         .dataTables_length select,
         .dataTables_filter input {
-            background: rgba(255, 255, 255, 0.05);
+            background: #fff;
             border: 1px solid var(--border);
             border-radius: 8px;
-            color: #fff;
+            color: var(--text);
             padding: 6px 12px;
             margin: 0 8px;
             outline: none;
+        }
+
+        .dataTables_length select:focus,
+        .dataTables_filter input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
         }
 
         .dataTables_info {
@@ -419,7 +429,7 @@
             margin: 0 4px !important;
             border-radius: 8px !important;
             border: 1px solid var(--border) !important;
-            background: rgba(255, 255, 255, 0.05) !important;
+            background: #fff !important;
             color: var(--text-muted) !important;
             cursor: pointer;
             transition: all 0.2s;
@@ -432,8 +442,8 @@
         }
 
         .paginate_button:hover:not(.current) {
-            background: rgba(255, 255, 255, 0.1) !important;
-            color: #fff !important;
+            background: #f8f9fa !important;
+            color: var(--primary) !important;
         }
 
         .dataTables_empty {
@@ -443,14 +453,20 @@
         }
 
         table.dataTable thead th {
-            border-bottom: 1px solid var(--border) !important;
+            border-bottom: 2px solid var(--border) !important;
+            color: var(--text);
         }
 
         table.dataTable.no-footer {
-            border-bottom: none !important;
+            border-bottom: 1px solid var(--border) !important;
         }
     </style>
     @stack('styles')
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .swal2-container .nice-select.swal2-select { display: none !important; }
+    </style>
 </head>
 
 <body>
@@ -461,8 +477,10 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
             @if ($company_setting->logo)
-                <img src="{{ asset('storage/' . $company_setting->logo) }}" alt="Logo"
-                    style="height: 40px; width: auto; border-radius: 8px;">
+                <div style="background: #ffffff; padding: 6px; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <img src="{{ asset('storage/' . $company_setting->logo) }}" alt="Logo"
+                        style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
             @else
                 <div class="brand-icon">SL</div>
             @endif
@@ -502,7 +520,7 @@
                 </a>
                 <a href="{{ route('admin.volunteers.index') }}"
                     class="nav-item {{ request()->routeIs('admin.volunteers*') ? 'active' : '' }}">
-                    <span class="nav-icon"><i class="fas fa-hands-helping"></i></span> Volunteers
+                    <span class="nav-icon"><i class="fas fa-hands-helping"></i></span> Internship
                 </a>
                 <a href="{{ route('admin.field-applications.index') }}"
                     class="nav-item {{ request()->routeIs('admin.field-applications*') ? 'active' : '' }}">
@@ -613,13 +631,6 @@
         </header>
 
         <main class="content">
-            @if (session('success'))
-                <div class="alert alert-success"><i class="fas fa-check-circle"></i> {{ session('success') }}</div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-error"><i class="fas fa-exclamation-circle"></i> {{ session('error') }}</div>
-            @endif
-
             @yield('content')
         </main>
     </div>
@@ -663,6 +674,85 @@
         });
     </script>
     @stack('scripts')
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        @if (session('success'))
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session('success') }}'
+            });
+        @endif
+
+        @if (session('error'))
+            Toast.fire({
+                icon: 'error',
+                title: '{{ session('error') }}'
+            });
+        @endif
+
+        @if (session('status'))
+            Toast.fire({
+                icon: 'info',
+                title: '{{ session('status') }}'
+            });
+        @endif
+
+        // Global File Size Validation (1MB limit)
+        const MAX_FILE_SIZE = 1048576; // 1MB in bytes
+
+        // Block on file selection
+        document.addEventListener('change', function(e) {
+            if (e.target.tagName === 'INPUT' && e.target.type === 'file') {
+                const file = e.target.files[0];
+                if (file && file.size > MAX_FILE_SIZE) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'File Too Large',
+                        html: '<p>The selected file <strong>' + file.name + '</strong> is <strong>' + (file.size / 1048576).toFixed(2) + 'MB</strong>.</p><p>Please upload a file smaller than <strong>1MB</strong>.</p>',
+                        confirmButtonColor: '#3b82f6',
+                        confirmButtonText: 'OK, choose another file'
+                    });
+                    e.target.value = ''; // Clear the input
+                    e.target.dataset.invalid = 'true';
+                } else if (e.target.dataset.invalid) {
+                    delete e.target.dataset.invalid;
+                }
+            }
+        });
+
+        // Block form submission if any file input is still oversized
+        document.addEventListener('submit', function(e) {
+            const fileInputs = e.target.querySelectorAll('input[type="file"]');
+            for (let input of fileInputs) {
+                const file = input.files[0];
+                if (file && file.size > MAX_FILE_SIZE) {
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'File Too Large',
+                        html: '<p>The file <strong>' + file.name + '</strong> is <strong>' + (file.size / 1048576).toFixed(2) + 'MB</strong>.</p><p>Please upload a file smaller than <strong>1MB</strong>.</p>',
+                        confirmButtonColor: '#3b82f6',
+                        confirmButtonText: 'OK, choose another file'
+                    });
+                    input.value = '';
+                    input.focus();
+                    return;
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
+

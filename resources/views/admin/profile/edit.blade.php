@@ -16,7 +16,7 @@
         }
     }
     .card {
-        background: var(--bg-sidebar);
+        background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 24px;
@@ -29,7 +29,7 @@
     .card-title {
         font-size: 18px;
         font-weight: 700;
-        color: #fff;
+        color: var(--text);
         margin-bottom: 4px;
     }
     .card-subtitle {
@@ -48,9 +48,9 @@
     }
     .form-control {
         width: 100%;
-        background: rgba(255,255,255,0.05);
+        background: #fff;
         border: 1px solid var(--border);
-        color: #fff;
+        color: var(--text);
         padding: 12px 16px;
         border-radius: 8px;
         font-family: inherit;
@@ -145,10 +145,11 @@
                         @endif
                     </div>
                     <div>
-                        <label class="btn" style="background: rgba(255,255,255,0.1); color: #fff;">
+                        <label class="btn" style="background: rgba(255,255,255,0.1); color: var(--text);">
                             <i class="fas fa-camera"></i> Change Photo
                             <input type="file" name="photo" style="display: none;" accept="image/*" onchange="previewImage(this)">
                         </label>
+                        <small class="text-muted d-block mt-2"><strong>Max 1MB.</strong></small>
                         @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -269,3 +270,4 @@
 @endpush
 
 @endsection
+

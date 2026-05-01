@@ -40,9 +40,9 @@ class CompanySettingController extends Controller
             'about_feature_2' => 'nullable|string',
             'nationwide_title' => 'nullable|string',
             'nationwide_description' => 'nullable|string',
-            'about_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'nationwide_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'about_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:1024',
+            'nationwide_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:1024',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:1024',
             'favicon' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,ico|max:1024',
             // About Page Fields
             'vision_title' => 'nullable|string',

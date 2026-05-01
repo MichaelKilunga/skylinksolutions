@@ -124,12 +124,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             // Service Related Items
             Route::post('/services/{service}/images',   [AdminServiceController::class, 'addImage'])->name('services.images.add');
+            Route::put('/service-images/{image}',       [AdminServiceController::class, 'updateImage'])->name('services.images.update');
             Route::delete('/service-images/{image}',    [AdminServiceController::class, 'deleteImage'])->name('services.images.delete');
             
             Route::post('/services/{service}/features', [AdminServiceController::class, 'addFeature'])->name('services.features.add');
+            Route::put('/service-features/{feature}',   [AdminServiceController::class, 'updateFeature'])->name('services.features.update');
             Route::delete('/service-features/{feature}', [AdminServiceController::class, 'deleteFeature'])->name('services.features.delete');
             
             Route::post('/services/{service}/projects', [AdminServiceController::class, 'addProject'])->name('services.projects.add');
+            Route::put('/service-projects/{project}',   [AdminServiceController::class, 'updateProject'])->name('services.projects.update');
             Route::delete('/service-projects/{project}', [AdminServiceController::class, 'deleteProject'])->name('services.projects.delete');
 
 

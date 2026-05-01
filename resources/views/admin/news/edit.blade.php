@@ -4,17 +4,17 @@
 
 @push('styles')
 <style>
-    .form-container { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; max-width: 900px; }
+    .form-container { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; max-width: 900px; }
     .form-group { margin-bottom: 24px; }
-    label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 8px; }
-    .form-control { width: 100%; background: rgba(15,23,42,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 16px; color: #fff; font-size: 14px; transition: all 0.2s; }
+    label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+    .form-control { width: 100%; background: rgba(15,23,42,0.5); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-size: 14px; transition: all 0.2s; }
     .form-control:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
     textarea.form-control { min-height: 120px; resize: vertical; }
     
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     
     .file-input-wrapper { position: relative; }
-    .file-input-label { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); border-radius: 10px; cursor: pointer; color: #94a3b8; font-size: 14px; transition: all 0.2s; }
+    .file-input-label { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: #fff; border: 1px dashed rgba(255,255,255,0.2); border-radius: 10px; cursor: pointer; color: var(--text-muted); font-size: 14px; transition: all 0.2s; }
     .file-input-label:hover { border-color: #3b82f6; color: #fff; background: rgba(59,130,246,0.05); }
     input[type="file"] { position: absolute; opacity: 0; width: 0; height: 0; }
 
@@ -24,8 +24,8 @@
 
     .btn-submit { padding: 12px 28px; background: linear-gradient(135deg,#3b82f6,#2563eb); border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(59,130,246,0.4); }
-    .btn-cancel { padding: 12px 24px; background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #94a3b8; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; margin-right: 12px; }
-    .btn-cancel:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .btn-cancel { padding: 12px 24px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; margin-right: 12px; }
+    .btn-cancel:hover { background: #fff; color: #fff; }
 
     .checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
     .checkbox-group input { width: 18px; height: 18px; cursor: pointer; }
@@ -110,3 +110,4 @@
     </form>
 </div>
 @endsection
+

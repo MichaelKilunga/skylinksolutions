@@ -11,6 +11,8 @@ class FieldApplication extends Model
 
     protected $fillable = [
         'full_name',
+        'email',
+        'phone_number',
         'university',
         'program',
         'year_of_study',

@@ -11,7 +11,7 @@
         
         .form-group { margin-bottom: 20px; }
         .form-label { display: block; font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 8px; }
-        .form-control { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; color: #fff; font-size: 14px; transition: all 0.2s; }
+        .form-control { width: 100%; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; transition: all 0.2s; }
         .form-control:focus { border-color: var(--primary); outline: none; background: rgba(255,255,255,0.08); }
         
         .btn-submit { background: var(--primary); color: #fff; border: none; padding: 12px 24px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label style="display:flex; align-items:center; gap:10px; color:#fff; cursor:pointer;">
+                            <label style="display:flex; align-items:center; gap:10px; color:var(--text); cursor:pointer;">
                                 <input type="checkbox" name="is_active" value="1" {{ $aboutFeature->is_active ? 'checked' : '' }} style="width:18px; height:18px;">
                                 <span style="font-size:14px; font-weight:500;">Active & Visible</span>
                             </label>
@@ -79,3 +79,4 @@
         </div>
     </div>
 @endsection
+

@@ -13,8 +13,8 @@
     .form-group { margin-bottom: 20px; }
     .form-label { display: block; font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 8px; }
     .form-control { 
-        width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); 
-        border: 1px solid var(--border); border-radius: 10px; color: #fff; 
+        width: 100%; padding: 12px 16px; background: #fff; 
+        border: 1px solid var(--border); border-radius: 10px; color: var(--text); 
         font-size: 14px; transition: all 0.2s; 
     }
     .form-control:focus { border-color: var(--primary); outline: none; background: rgba(255,255,255,0.08); }
@@ -36,35 +36,28 @@
 
 @section('content')
 <div class="settings-grid">
-    @if(session('success'))
-        <div class="alert-success">
-            <i class="fas fa-check-circle"></i>
-            {{ session('success') }}
-        </div>
-    @endif
-
     @php $activeTab = request('tab', 'home'); @endphp
 
     <div class="panel mb-4" style="background: transparent; border: none;">
         <div class="d-flex gap-2">
             <a href="{{ route('admin.settings.index', ['tab' => 'identity']) }}" 
                class="btn {{ $activeTab == 'identity' ? 'btn-primary' : 'btn-outline-secondary' }}" 
-               style="border-radius: 10px; margin-right: 10px; padding: 10px 20px; color: {{ $activeTab == 'identity' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'identity' ? 'var(--primary)' : 'rgba(255,255,255,0.05)' }}; border: 1px solid {{ $activeTab == 'identity' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
+               style="border-radius: 10px; margin-right: 10px; padding: 10px 20px; color: {{ $activeTab == 'identity' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'identity' ? 'var(--primary)' : '#fff' }}; border: 1px solid {{ $activeTab == 'identity' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
                <i class="fas fa-fingerprint mr-2"></i> Site Identity
             </a>
             <a href="{{ route('admin.settings.index', ['tab' => 'home']) }}" 
                class="btn {{ $activeTab == 'home' ? 'btn-primary' : 'btn-outline-secondary' }}" 
-               style="border-radius: 10px; margin-right: 10px; padding: 10px 20px; color: {{ $activeTab == 'home' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'home' ? 'var(--primary)' : 'rgba(255,255,255,0.05)' }}; border: 1px solid {{ $activeTab == 'home' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
+               style="border-radius: 10px; margin-right: 10px; padding: 10px 20px; color: {{ $activeTab == 'home' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'home' ? 'var(--primary)' : '#fff' }}; border: 1px solid {{ $activeTab == 'home' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
                <i class="fas fa-home mr-2"></i> Home Page Content
             </a>
             <a href="{{ route('admin.settings.index', ['tab' => 'contact']) }}" 
                class="btn {{ $activeTab == 'contact' ? 'btn-primary' : 'btn-outline-secondary' }}"
-               style="border-radius: 10px; padding: 10px 20px; color: {{ $activeTab == 'contact' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'contact' ? 'var(--primary)' : 'rgba(255,255,255,0.05)' }}; border: 1px solid {{ $activeTab == 'contact' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
+               style="border-radius: 10px; padding: 10px 20px; color: {{ $activeTab == 'contact' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'contact' ? 'var(--primary)' : '#fff' }}; border: 1px solid {{ $activeTab == 'contact' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
                <i class="fas fa-address-book mr-2"></i> Contact & Socials
             </a>
             <a href="{{ route('admin.settings.index', ['tab' => 'about']) }}" 
                class="btn {{ $activeTab == 'about' ? 'btn-primary' : 'btn-outline-secondary' }}"
-               style="border-radius: 10px; padding: 10px 20px; color: {{ $activeTab == 'about' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'about' ? 'var(--primary)' : 'rgba(255,255,255,0.05)' }}; border: 1px solid {{ $activeTab == 'about' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
+               style="border-radius: 10px; padding: 10px 20px; color: {{ $activeTab == 'about' ? '#fff' : 'var(--text-muted)' }}; background: {{ $activeTab == 'about' ? 'var(--primary)' : '#fff' }}; border: 1px solid {{ $activeTab == 'about' ? 'var(--primary)' : 'var(--border)' }}; text-decoration: none;">
                <i class="fas fa-info-circle mr-2"></i> About Us Page
             </a>
         </div>
@@ -92,23 +85,24 @@
                             <div class="form-group">
                                 <label class="form-label">Main Logo</label>
                                 @if($setting->logo)
-                                    <div class="mb-3 p-3 text-center" style="background:rgba(255,255,255,0.05);border-radius:12px;">
+                                    <div class="mb-3 p-3 text-center" style="background:#fff;border-radius:12px;">
                                         <img src="{{ asset('storage/' . $setting->logo) }}" alt="Logo" style="max-height:80px;">
                                     </div>
                                 @endif
                                 <input type="file" name="logo" class="form-control">
-                                <small class="text-muted">Recommended: PNG or SVG with transparent background.</small>
+                                <small class="text-muted">Recommended: PNG or SVG with transparent background. <strong>Max 1MB.</strong></small>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Favicon</label>
                                 @if($setting->favicon)
-                                    <div class="mb-3 p-3 text-center" style="background:rgba(255,255,255,0.05);border-radius:12px;">
+                                    <div class="mb-3 p-3 text-center" style="background:#fff;border-radius:12px;">
                                         <img src="{{ asset('storage/' . $setting->favicon) }}" alt="Favicon" style="height:32px;width:32px;">
                                     </div>
                                 @endif
                                 <input type="file" name="favicon" class="form-control">
+                                <small class="text-muted">Recommended: Square, PNG or ICO. <strong>Max 1MB.</strong></small>
                                 <small class="text-muted">Recommended: 32x32px .ico or .png file.</small>
                             </div>
                         </div>
@@ -354,13 +348,13 @@
                             <div class="form-group">
                                 <label class="form-label"><i class="fas fa-image" style="color:#60a5fa;margin-right:6px;"></i>About Section Image</label>
                                 @if($setting->about_image)
-                                    <div class="mb-3" style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;display:inline-block;">
+                                    <div class="mb-3" style="background:#fff;border-radius:10px;padding:12px;display:inline-block;">
                                         <img src="{{ asset('storage/' . $setting->about_image) }}" alt="About Image" style="max-height:120px;border-radius:8px;display:block;">
                                         <small class="text-muted d-block mt-2">Current image — upload a new one below to replace it.</small>
                                     </div>
                                 @endif
                                 <input type="file" name="about_image" class="form-control" accept="image/*">
-                                <small class="text-muted">This is the photo shown on the left side of the Home page About section. Recommended: landscape, min 800×600px.</small>
+                                <small class="text-muted">This is the photo shown on the left side of the Home page About section. Recommended: landscape, min 800×600px. <strong>Max 1MB.</strong></small>
                             </div>
                         </div>
                     </div>
@@ -392,6 +386,7 @@
                                     <img src="{{ asset('storage/' . $setting->nationwide_image) }}" alt="Nationwide" style="width:100px;margin-bottom:10px;border-radius:8px;">
                                 @endif
                                 <input type="file" name="nationwide_image" class="form-control">
+                                <small class="text-muted"><strong>Max 1MB.</strong></small>
                             </div>
                         </div>
                     </div>
@@ -407,3 +402,4 @@
     </form>
 </div>
 @endsection
+

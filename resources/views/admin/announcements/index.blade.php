@@ -10,8 +10,8 @@
     .announcements-grid { display: grid; gap: 16px; }
     
     table { width: 100%; border-collapse: collapse; }
-    th { text-align: left; padding: 16px 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    td { padding: 16px 20px; font-size: 14px; color: #e2e8f0; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    th { text-align: left; padding: 16px 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    td { padding: 16px 20px; font-size: 14px; color: var(--text); border-bottom: 1px solid #fff; vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: rgba(255,255,255,0.02); }
 
@@ -20,7 +20,7 @@
 
     .status-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
     .badge-published { background: rgba(16,185,129,0.15); color: #34d399; }
-    .badge-draft     { background: rgba(100,116,139,0.15); color: #94a3b8; }
+    .badge-draft     { background: rgba(100,116,139,0.15); color: var(--text-muted); }
     .ann-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .btn-sm { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; font-family: 'Inter', sans-serif; }
     .btn-edit   { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #fbbf24; }
@@ -29,14 +29,14 @@
     .btn-toggle:hover { background: rgba(6,182,212,0.25); }
     .btn-del { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #f87171; }
     .btn-del:hover { background: rgba(239,68,68,0.25); }
-    .empty-state { padding: 60px; text-align: center; color: #64748b; background: rgba(255,255,255,0.03); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); }
+    .empty-state { padding: 60px; text-align: center; color: #64748b; background: rgba(255,255,255,0.03); border-radius: 14px; border: 1px solid #fff; }
     .empty-state i { font-size: 48px; margin-bottom: 16px; display: block; opacity: 0.3; }
 </style>
 @endpush
 
 @section('content')
 <div class="page-header">
-    <h2 style="font-size:20px;font-weight:700;color:#fff;">
+    <h2 style="font-size:20px;font-weight:700;color:var(--text);">
         <i class="fas fa-bullhorn" style="color:#fbbf24;margin-right:10px;"></i>Announcements
     </h2>
     <a href="{{ route('admin.announcements.create') }}" class="btn-create">
@@ -44,7 +44,7 @@
     </a>
 </div>
 
-<div class="table-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden;">
+<div class="table-card" style="background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
     @if($announcements->count())
     <table class="datatable">
         <thead>
@@ -59,8 +59,8 @@
         <tbody>
             @foreach($announcements as $ann)
             <tr class="{{ $ann->is_published ? 'published' : 'draft' }}">
-                <td><div style="font-weight:700; color:#e2e8f0;">{{ $ann->title }}</div></td>
-                <td><div style="font-size:13px; color:#94a3b8;">{{ Str::limit($ann->body, 60) }}</div></td>
+                <td><div style="font-weight:700; color: var(--text);">{{ $ann->title }}</div></td>
+                <td><div style="font-size:13px; color: var(--text-muted);">{{ Str::limit($ann->body, 60) }}</div></td>
                 <td>
                     @if($ann->is_published)
                         <span class="status-badge badge-published"><i class="fas fa-check-circle"></i> Published</span>
@@ -102,3 +102,4 @@
     @endif
 </div>
 @endsection
+

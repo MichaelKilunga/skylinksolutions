@@ -5,17 +5,17 @@
 @push('styles')
 <style>
     .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-    .table-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+    .table-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
     table { width: 100%; border-collapse: collapse; }
-    thead th { padding: 14px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
-    tbody td { padding: 16px 20px; font-size: 14px; color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    thead th { padding: 14px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; background: rgba(255,255,255,0.02); border-bottom: 1px solid #fff; text-align: left; }
+    tbody td { padding: 16px 20px; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid #fff; vertical-align: middle; }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: rgba(255,255,255,0.03); }
     .email-cell { display: flex; align-items: center; gap: 12px; }
     .avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; background: linear-gradient(135deg,#06b6d4,#8b5cf6); }
     .status-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
     .status-active   { background: rgba(16,185,129,0.15); color: #34d399; }
-    .status-inactive { background: rgba(100,116,139,0.15); color: #94a3b8; }
+    .status-inactive { background: rgba(100,116,139,0.15); color: var(--text-muted); }
     .btn-del { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 8px; color: #f87171; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .btn-del:hover { background: rgba(239,68,68,0.25); }
     .btn-status { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
@@ -23,7 +23,7 @@
     .btn-activate:hover { background: rgba(16,185,129,0.25); }
     .btn-deactivate { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.25); color: #fbbf24; }
     .btn-deactivate:hover { background: rgba(245,158,11,0.25); }
-    .pagination-wrap { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .pagination-wrap { padding: 16px 20px; border-top: 1px solid #fff; }
     .empty-state { padding: 60px; text-align: center; color: #64748b; }
     .empty-state i { font-size: 48px; margin-bottom: 16px; display: block; opacity: 0.3; }
 </style>
@@ -31,7 +31,7 @@
 
 @section('content')
 <div class="page-header">
-    <h2 style="font-size:20px;font-weight:700;color:#fff;">
+    <h2 style="font-size:20px;font-weight:700;color:var(--text);">
         <i class="fas fa-users" style="color:#22d3ee;margin-right:10px;"></i>Subscribers
     </h2>
     <span style="font-size:13px;color:#64748b;">Total: {{ $subscribers->count() }}</span>
@@ -96,3 +96,4 @@
     @endif
 </div>
 @endsection
+

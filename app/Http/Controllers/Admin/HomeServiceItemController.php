@@ -25,7 +25,7 @@ class HomeServiceItemController extends Controller
         $data = $request->validate([
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'order'       => ['nullable', 'integer'],
         ]);
 
@@ -51,7 +51,7 @@ class HomeServiceItemController extends Controller
         $data = $request->validate([
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'order'       => ['nullable', 'integer'],
         ]);
 

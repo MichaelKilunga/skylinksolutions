@@ -96,15 +96,6 @@
                 <div class="col-lg-8 mt-4 mb-4">
                     <div class="contact-from bg-white p-4 p-md-5 rounded shadow-sm h-100">
 
-                        {{-- Success Message --}}
-                        @if (session('success'))
-                            <div class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert"
-                                style="border-radius:10px; background:#d1fae5; border:1px solid #6ee7b7; color:#065f46;">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         <h4 class="font-weight-bold mb-4">Send Us A Message</h4>
                         <div class="main-form">
                             <form action="{{ route('contact.send') }}" method="POST">

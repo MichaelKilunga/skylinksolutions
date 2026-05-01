@@ -20,8 +20,8 @@
         }
 
         .form-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 32px;
             max-width: 800px;
@@ -35,17 +35,17 @@
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: #cbd5e1;
+            color: var(--text-muted);
             margin-bottom: 8px;
         }
 
         .form-control {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            color: #e2e8f0;
+            color: var(--text);
             font-size: 14px;
             font-family: 'Inter', sans-serif;
             transition: all 0.2s;
@@ -151,10 +151,10 @@
             align-items: center;
             gap: 8px;
             padding: 12px 22px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
@@ -213,9 +213,18 @@
                         <input type="checkbox" name="status" value="1" {{ old('status', true) ? 'checked' : '' }}>
                         <span class="toggle-slider"></span>
                     </label>
-                    <span class="toggle-label" style="color:#94a3b8; font-size:14px;">Visible in navigation and service
+                    <span class="toggle-label" style="color: var(--text-muted); font-size:14px;">Visible in navigation and service
                         pages</span>
                 </div>
+            </div>
+            {{-- order --}}
+            <div class="form-group">
+                <label for="order">Order</label>
+                <input type="number" id="order" name="order" class="form-control" placeholder="Order"
+                    value="{{ old('order', 0) }}">
+                @error('order')
+                    <div class="form-error">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-actions">
@@ -225,3 +234,4 @@
         </form>
     </div>
 @endsection
+

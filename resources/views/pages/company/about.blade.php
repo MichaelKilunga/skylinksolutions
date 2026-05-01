@@ -101,15 +101,15 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                     <div class="singel-counter text-center rounded p-4 shadow-sm"
                         style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);">
-                        <h4 class="text-light mb-2">Software Projects</h4>
-                        <span class="text-white font-weight-bold" style="font-size: 2.5rem;"><span
+                        <h4 class="text-light mb-2" style="font-size: 20px">Software Projects</h4>
+                        <span class="text-white font-weight-bold " style="font-size: 2.5rem;"><span
                                 class="counter">{{ $settings->software_projects_count ?? '10' }}</span>+</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                     <div class="singel-counter text-center rounded p-4 shadow-sm"
                         style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);">
-                        <h4 class="text-light mb-2">Networking Systems</h4>
+                        <h4 class="text-light mb-2" style="font-size: 20px">Networking Systems</h4>
                         <span class="text-white font-weight-bold" style="font-size: 2.5rem;"><span
                                 class="counter">{{ $settings->networking_systems_count ?? '150' }}</span>+</span>
                     </div>
@@ -117,7 +117,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                     <div class="singel-counter text-center rounded p-4 shadow-sm"
                         style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);">
-                        <h4 class="text-light mb-2">Security Systems</h4>
+                        <h4 class="text-light mb-2" style="font-size: 20px">Security Systems</h4>
                         <span class="text-white font-weight-bold" style="font-size: 2.5rem;"><span
                                 class="counter">{{ $settings->security_systems_count ?? '100' }}</span>+</span>
                     </div>
@@ -125,7 +125,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                     <div class="singel-counter text-center rounded p-4 shadow-sm"
                         style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);">
-                        <h4 class="text-light mb-2">Automation Systems</h4>
+                        <h4 class="text-light mb-2" style="font-size: 20px">Automation Systems</h4>
                         <span class="text-white font-weight-bold" style="font-size: 2.5rem;"><span
                                 class="counter">{{ $settings->automation_systems_count ?? '1' }}</span>+</span>
                     </div>
@@ -147,7 +147,7 @@
             </div>
             <div class="row justify-content-center">
                 @foreach ($teamMembers as $member)
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card border-0 shadow-sm h-100 text-center overflow-hidden team-card pt-4">
                             <div class="d-flex justify-content-center">
                                 <img src="{{ $member->profile_photo_url }}" alt="{{ $member->name }}"

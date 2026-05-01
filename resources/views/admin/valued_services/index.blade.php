@@ -50,15 +50,15 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #94a3b8;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
         }
 
         td {
             padding: 16px 20px;
             font-size: 14px;
-            color: #e2e8f0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            border-bottom: 1px solid #fff;
             vertical-align: middle;
         }
 
@@ -87,7 +87,7 @@
 
         .badge-inactive {
             background: rgba(100, 116, 139, 0.15);
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
         .card-actions {
@@ -147,7 +147,7 @@
             color: #64748b;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid #fff;
         }
 
         .empty-state i {
@@ -161,7 +161,7 @@
 
 @section('content')
     <div class="page-header">
-        <h2 style="font-size:20px;font-weight:700;color:#fff;">
+        <h2 style="font-size:20px;font-weight:700;color:var(--text);">
             <i class="fas fa-gem" style="color:#a78bfa;margin-right:10px;"></i>Valued Services
         </h2>
         <a href="{{ route('admin.valued_services.create') }}" class="btn-create">
@@ -170,7 +170,7 @@
     </div>
 
     <div class="table-card"
-        style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden;">
+        style="background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
         @if ($valuedServices->count())
             <table class="datatable">
                 <thead>
@@ -186,11 +186,11 @@
                         <tr class="{{ !$svc->is_active ? 'inactive' : '' }}">
                             <td>
                                 <div style="display:flex; align-items:center; gap:12px;">
-                                    <div style="font-weight:700; color:#e2e8f0;">{{ $svc->title }}</div>
+                                    <div style="font-weight:700; color: var(--text);">{{ $svc->title }}</div>
                                 </div>
                             </td>
                             <td>
-                                <div style="font-size:13px; color:#94a3b8;">{{ Str::limit($svc->description, 60) }}
+                                <div style="font-size:13px; color: var(--text-muted);">{{ Str::limit($svc->description, 60) }}
                                 </div>
                             </td>
                             <td>
@@ -232,4 +232,5 @@
         @endif
     </div>
 @endsection
+
 

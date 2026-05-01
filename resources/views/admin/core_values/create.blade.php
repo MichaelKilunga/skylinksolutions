@@ -13,32 +13,32 @@
             
             <div class="form-group" style="margin-bottom: 20px;">
                 <label style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Title</label>
-                <input type="text" name="title" class="form-control" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;" required>
+                <input type="text" name="title" class="form-control" style="width: 100%; padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text);" required>
             </div>
 
             <div class="form-group" style="margin-bottom: 20px;">
                 <label style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Description</label>
-                <textarea name="description" rows="3" class="form-control" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;"></textarea>
+                <textarea name="description" rows="3" class="form-control" style="width: 100%; padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text);"></textarea>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group" style="margin-bottom: 20px;">
                         <label style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">FontAwesome Icon</label>
-                        <input type="text" name="icon" class="form-control" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;" placeholder="e.g. fa-users" value="fa-check">
+                        <input type="text" name="icon" class="form-control" style="width: 100%; padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text);" placeholder="e.g. fa-users" value="fa-check">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group" style="margin-bottom: 20px;">
                         <label style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Display Order</label>
-                        <input type="number" name="order" class="form-control" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;" value="0">
+                        <input type="number" name="order" class="form-control" style="width: 100%; padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text);" value="0">
                     </div>
                 </div>
             </div>
 
             <div class="form-group" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                 <input type="checkbox" name="is_active" id="is_active" checked style="width: 18px; height: 18px; cursor: pointer;">
-                <label for="is_active" style="font-size: 14px; color: #fff; cursor: pointer;">Mark as Active</label>
+                <label for="is_active" style="font-size: 14px; color: var(--text); cursor: pointer;">Mark as Active</label>
             </div>
 
             <div style="margin-top: 20px; display: flex; gap: 12px;">
@@ -51,3 +51,5 @@
     </div>
 </div>
 @endsection
+
+

@@ -25,7 +25,7 @@ class SliderController extends Controller
         $data = $request->validate([
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'btn1_text'   => ['nullable', 'string', 'max:50'],
             'btn1_url'    => ['nullable', 'string', 'max:255'],
             'btn2_text'   => ['nullable', 'string', 'max:50'],
@@ -55,7 +55,7 @@ class SliderController extends Controller
         $data = $request->validate([
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'image'       => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:1024'],
             'btn1_text'   => ['nullable', 'string', 'max:50'],
             'btn1_url'    => ['nullable', 'string', 'max:255'],
             'btn2_text'   => ['nullable', 'string', 'max:50'],

@@ -255,7 +255,7 @@
                         <ul>
                             <li><a href="{{ url('/') }}"><i class="fa fa-angle-right"></i> Home</a></li>
                             <li><a href="{{ url('/about') }}"><i class="fa fa-angle-right"></i> About Us</a></li>
-                            <li><a href="{{ url('/community') }}"><i class="fa fa-angle-right"></i> Our Community</a>
+                            <li><a href="{{ url('/community') }}"><i class="fa fa-angle-right"></i> Community</a>
                             </li>
                             <li><a href="{{ url('/contact') }}"><i class="fa fa-angle-right"></i> Contact</a></li>
                             <li><a href="{{ url('/news') }}"><i class="fa fa-angle-right"></i> News</a></li>
@@ -270,16 +270,12 @@
                             <h6>Our Services</h6>
                         </div>
                         <ul>
-                            <li><a href="{{ url('/software-development') }}"><i class="fa fa-angle-right"></i> Software
-                                    Development</a></li>
-                            <li><a href="{{ url('/networking') }}"><i class="fa fa-angle-right"></i> Networking</a>
-                            </li>
-                            <li><a href="{{ url('/cctv-camera') }}"><i class="fa fa-angle-right"></i> CCTV Camera</a>
-                            </li>
-                            <li><a href="{{ url('/electric-fencing') }}"><i class="fa fa-angle-right"></i> Electric
-                                    Fencing</a></li>
-                            <li><a href="{{ url('/biometry') }}"><i class="fa fa-angle-right"></i> Biometric & Access
-                                    Control</a></li>
+                            @php
+                                $footerServices = \App\Models\Service::where('status', 1)->orderBy('order')->get();
+                            @endphp
+                            @foreach ($footerServices as $srv)
+                                <li><a href="{{ url('/services/' . $srv->slug) }}"><i class="fa fa-angle-right"></i> {{ $srv->title }}</a></li>
+                            @endforeach
                         </ul>
                     </div> <!-- footer link -->
                 </div>
