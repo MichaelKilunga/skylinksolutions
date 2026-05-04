@@ -55,7 +55,7 @@
         <div class="form-group">
             <label for="logo">Partner Logo</label>
             <input type="file" id="logo" name="logo" class="form-control" accept="image/*" onchange="previewImage(this)">
-            <div class="form-hint">Upload a high-quality logo (max 2MB)</div>
+            <div class="form-hint">Upload a high-quality logo (max 1MB)</div>
             @error('logo')<div class="form-error">{{ $message }}</div>@enderror
             <div class="logo-preview" id="previewContainer" style="display: none;">
                 <img id="logoPreview" src="#" alt="Logo Preview">

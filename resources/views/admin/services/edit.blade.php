@@ -432,8 +432,11 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>New Image</label>
+                        <label>New Image <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
                         <input type="file" name="image" class="form-control" required>
+                        @error('image')
+                            <div style="color:#f87171; font-size:12px; margin-top:5px;">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Caption (Optional)</label>
@@ -485,8 +488,11 @@
                         <input type="text" name="category" class="form-control" placeholder="e.g. E-commerce">
                     </div>
                     <div class="form-group">
-                        <label>Thumbnail</label>
+                        <label>Thumbnail <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
                         <input type="file" name="image" class="form-control" required>
+                        @error('image')
+                            <div style="color:#f87171; font-size:12px; margin-top:5px;">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Live Link (Optional)</label>
@@ -540,8 +546,11 @@
                     <img id="edit_image_preview" src="" style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
                 </div>
                 <div class="form-group">
-                    <label>Change Image (Optional)</label>
+                    <label>Change Image (Optional) <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
                     <input type="file" name="image" class="form-control">
+                    @error('image')
+                        <div style="color:#f87171; font-size:12px; margin-top:5px;">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Caption</label>
@@ -574,8 +583,11 @@
                     <img id="edit_project_preview" src="" style="width:100%; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
                 </div>
                 <div class="form-group">
-                    <label>Change Thumbnail (Optional)</label>
+                    <label>Change Thumbnail (Optional) <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
                     <input type="file" name="image" class="form-control">
+                    @error('image')
+                        <div style="color:#f87171; font-size:12px; margin-top:5px;">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Live Link</label>
@@ -596,7 +608,7 @@
         function openEditFeatureModal(feature) {
             const modal = document.getElementById('editFeatureModal');
             const form = document.getElementById('editFeatureForm');
-            form.action = `/admin/service-features/${feature.id}`;
+            form.action = `{{ url('admin/service-features') }}/${feature.id}`;
             document.getElementById('edit_feature_title').value = feature.title;
             document.getElementById('edit_feature_icon').value = feature.icon;
             document.getElementById('edit_feature_description').value = feature.description;
@@ -606,8 +618,8 @@
         function openEditImageModal(img) {
             const modal = document.getElementById('editImageModal');
             const form = document.getElementById('editImageForm');
-            form.action = `/admin/service-images/${img.id}`;
-            document.getElementById('edit_image_preview').src = `/storage/${img.image}`;
+            form.action = `{{ url('admin/service-images') }}/${img.id}`;
+            document.getElementById('edit_image_preview').src = `{{ asset('storage') }}/${img.image}`;
             document.getElementById('edit_image_title').value = img.title || '';
             modal.classList.add('active');
         }
@@ -615,10 +627,10 @@
         function openEditProjectModal(project) {
             const modal = document.getElementById('editProjectModal');
             const form = document.getElementById('editProjectForm');
-            form.action = `/admin/service-projects/${project.id}`;
+            form.action = `{{ url('admin/service-projects') }}/${project.id}`;
             document.getElementById('edit_project_title').value = project.title;
             document.getElementById('edit_project_category').value = project.category;
-            document.getElementById('edit_project_preview').src = `/storage/${project.image}`;
+            document.getElementById('edit_project_preview').src = `{{ asset('storage') }}/${project.image}`;
             document.getElementById('edit_project_link').value = project.link || '';
             modal.classList.add('active');
         }

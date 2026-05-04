@@ -169,8 +169,7 @@
         </a>
     </div>
 
-    <div class="table-card"
-        style="background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
+    <div class="table-card" style="background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
         @if ($services->count())
             <table class="datatable">
                 <thead>
@@ -197,7 +196,8 @@
                                 </div>
                             </td>
                             <td>
-                                <div style="font-size:13px; color: var(--text-muted);">{{ Str::limit($svc->short_description, 60) }}
+                                <div style="font-size:13px; color: var(--text-muted);">
+                                    {{ Str::limit($svc->short_description, 60) }}
                                 </div>
                             </td>
                             <td>
@@ -239,4 +239,3 @@
         @endif
     </div>
 @endsection
-

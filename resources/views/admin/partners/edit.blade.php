@@ -56,7 +56,7 @@
         <div class="form-group">
             <label for="logo">Partner Logo</label>
             <input type="file" id="logo" name="logo" class="form-control" accept="image/*" onchange="previewImage(this)">
-            <div class="form-hint">Leave blank to keep current logo. Max 2MB.</div>
+            <div class="form-hint">Leave blank to keep current logo. Max 1MB.</div>
             @error('logo')<div class="form-error">{{ $message }}</div>@enderror
             <div class="logo-preview" id="previewContainer">
                 <img id="logoPreview" src="{{ $partner->logo_url }}" alt="Logo Preview">
