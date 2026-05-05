@@ -185,13 +185,13 @@
                         <tr class="{{ !$svc->status ? 'inactive' : '' }}">
                             <td>
                                 <div style="display:flex; align-items:center; gap:12px;">
-                                    {{-- @if ($svc->banner_image)
-                            <img src="{{ asset('storage/' . $svc->banner_image) }}" style="width:40px; height:40px; object-fit:cover; border-radius:8px;">
-                        @else
-                            <div style="width:40px; height:40px; background:rgba(139,92,246,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#a78bfa;">
-                                <i class="fas fa-image"></i>
-                            </div>
-                        @endif --}}
+                                    @if ($svc->banner_image)
+                                        <img src="{{ \Storage::disk('public')->url($svc->banner_image) }}" style="width:40px; height:40px; object-fit:cover; border-radius:8px;">
+                                    @else
+                                        <div style="width:40px; height:40px; background:rgba(139,92,246,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#a78bfa;">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    @endif
                                     <div style="font-weight:700; color: var(--text);">{{ $svc->title }}</div>
                                 </div>
                             </td>

@@ -188,6 +188,14 @@
             </div>
 
             <div class="form-group">
+                <label for="banner_image">Banner Image <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
+                <input type="file" id="banner_image" name="banner_image" class="form-control">
+                @error('banner_image')
+                    <div class="form-error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="short_description">Short Description</label>
                 <textarea id="short_description" name="short_description" class="form-control" rows="2"
                     placeholder="A brief catchphrase or summary...">{{ old('short_description') }}</textarea>

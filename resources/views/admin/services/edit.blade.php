@@ -299,13 +299,16 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group">
-                    <label>Banner Image</label>
-                    @if ($service->banner_image)
-                        <img src="{{ asset('storage/' . $service->banner_image) }}" style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
-                    @endif
-                    <input type="file" name="banner_image" class="form-control">
-                </div> --}}
+                    <div class="form-group">
+                        <label>Banner Image <small style="color:var(--text-muted);">(Max: 1MB)</small></label>
+                        @if ($service->banner_image)
+                            <img src="{{ \Storage::disk('public')->url($service->banner_image) }}" style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;">
+                        @endif
+                        <input type="file" name="banner_image" class="form-control">
+                        @error('banner_image')
+                            <div class="form-error">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                     <div class="form-group">
                         <label>Short Description (Tagline)</label>
@@ -410,7 +413,7 @@
                     @foreach ($service->images as $img)
                         <div class="item-card">
                             <div class="item-info">
-                                <img src="{{ asset('storage/' . $img->image) }}">
+                                <img src="{{ \Storage::disk('public')->url($img->image) }}">
                                 <span style="font-size:13px; color:var(--text);">{{ $img->title ?? 'Slide Image' }}</span>
                             </div>
                             <div class="actions-cell">
@@ -455,7 +458,7 @@
                     @foreach ($service->projects as $proj)
                         <div class="item-card">
                             <div class="item-info">
-                                <img src="{{ asset('storage/' . $proj->image) }}">
+                                <img src="{{ \Storage::disk('public')->url($proj->image) }}">
                                 <div>
                                     <div style="font-size:13px; color:var(--text);">{{ $proj->title }}</div>
                                     <div style="font-size:11px; color:#64748b;">{{ $proj->category }}</div>
@@ -619,7 +622,7 @@
             const modal = document.getElementById('editImageModal');
             const form = document.getElementById('editImageForm');
             form.action = `{{ url('admin/service-images') }}/${img.id}`;
-            document.getElementById('edit_image_preview').src = `{{ asset('storage') }}/${img.image}`;
+            document.getElementById('edit_image_preview').src = `{{ \Storage::disk('public')->url('') }}${img.image}`;
             document.getElementById('edit_image_title').value = img.title || '';
             modal.classList.add('active');
         }
@@ -630,7 +633,7 @@
             form.action = `{{ url('admin/service-projects') }}/${project.id}`;
             document.getElementById('edit_project_title').value = project.title;
             document.getElementById('edit_project_category').value = project.category;
-            document.getElementById('edit_project_preview').src = `{{ asset('storage') }}/${project.image}`;
+            document.getElementById('edit_project_preview').src = `{{ \Storage::disk('public')->url('') }}${project.image}`;
             document.getElementById('edit_project_link').value = project.link || '';
             modal.classList.add('active');
         }
