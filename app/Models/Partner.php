@@ -24,6 +24,6 @@ class Partner extends Model
             return asset($this->logo_path);
         }
 
-        return \Storage::disk('public')->url($this->logo_path);
+        return asset('storage/' . $this->logo_path);
     }
 }

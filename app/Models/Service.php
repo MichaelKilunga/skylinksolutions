@@ -31,4 +31,12 @@ class Service extends Model
     {
         return $this->hasMany(ServiceProject::class);
     }
+
+    public function getBannerImageUrlAttribute()
+    {
+        if (!$this->banner_image) {
+            return asset('images/placeholder.jpg');
+        }
+        return asset('storage/' . $this->banner_image);
+    }
 }

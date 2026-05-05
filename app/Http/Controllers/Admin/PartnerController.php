@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
@@ -55,6 +56,9 @@ class PartnerController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
+            if ($partner->logo_path) {
+                Storage::disk('public')->delete($partner->logo_path);
+            }
             $validated['logo_path'] = $request->file('logo')->store('partners', 'public');
         }
 
@@ -69,6 +73,9 @@ class PartnerController extends Controller
 
     public function destroy(\App\Models\Partner $partner)
     {
+        if ($partner->logo_path) {
+            Storage::disk('public')->delete($partner->logo_path);
+        }
         $partner->delete();
         return redirect()->route('admin.partners.index')->with('success', 'Partner deleted successfully.');
     }
