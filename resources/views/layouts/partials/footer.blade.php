@@ -322,7 +322,7 @@
                             <p>&copy; {{ date('Y') }} SkyLink Solutions. All rights reserved.</p>
                         </div> <!-- copyright content -->
                         <div class="copyright-content">
-                            <p>Designed by <a href="{{ 'admin/login' }}" target="_blank">SkyLink
+                            <p>Designed by <a href="{{ url('admin/login') }}" target="_blank">SkyLink
                                     Solutions</a></p>
                         </div>
                     </div> <!-- copyright -->

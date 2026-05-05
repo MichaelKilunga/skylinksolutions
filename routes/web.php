@@ -219,11 +219,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-// ─── Jetstream Dashboard (legacy) ─────────────────────────────────────────────
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
-
-    // Account Deletion Request
-    Route::post('/profile/request-deletion', [\App\Http\Controllers\AccountDeletionController::class, 'requestDeletion'])->name('profile.request-deletion');
-    Route::post('/profile/cancel-deletion',  [\App\Http\Controllers\AccountDeletionController::class, 'cancelDeletion'])->name('profile.cancel-deletion');
-});
