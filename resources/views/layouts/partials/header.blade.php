@@ -24,12 +24,14 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item"><a href="{{ $company_setting->facebook_url ?? '#' }}"
                                     target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ $company_setting->twitter_url ?? '#' }}"><i
-                                        class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ $company_setting->linkedin_url ?? '#' }}"><i
-                                        class="fa fa-linkedin"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ $company_setting->youtube_url ?? '#' }}"><i
-                                        class="fa fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $company_setting->twitter_url ?? '#' }}"
+                                    target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $company_setting->instagram_url ?? '#' }}"
+                                    target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $company_setting->linkedin_url ?? '#' }}"
+                                    target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $company_setting->youtube_url ?? '#' }}"
+                                    target="_blank"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div> <!-- header top right -->
                 </div>

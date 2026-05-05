@@ -236,13 +236,15 @@
                             security and surveillance.</p>
                         <ul class="social">
                             <li><a href="{{ $company_setting->facebook_url ?? '#' }}" target="_blank"><i
-                                        class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="{{ $company_setting->twitter_url ?? '#' }}"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="{{ $company_setting->linkedin_url ?? '#' }}"><i class="fa fa-linkedin"></i></a>
-                            </li>
+                                         class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $company_setting->twitter_url ?? '#' }}" target="_blank"><i
+                                         class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{ $company_setting->instagram_url ?? '#' }}" target="_blank"><i
+                                         class="fa fa-instagram"></i></a></li>
+                            <li><a href="{{ $company_setting->linkedin_url ?? '#' }}" target="_blank"><i
+                                         class="fa fa-linkedin"></i></a></li>
                             <li><a href="{{ $company_setting->youtube_url ?? '#' }}" target="_blank"><i
-                                        class="fa fa-youtube"></i></a></li>
+                                         class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div> <!-- footer logo -->
                 </div>
